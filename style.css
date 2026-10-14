@@ -1,0 +1,740 @@
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS DO SITE
+   ========================================= */
+
+/* Remove margens inesperadas e facilita o controle dos tamanhos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define as cores e os estilos principais do projeto */
+:root {
+    --verde-escuro: #234b36;
+    --verde-principal: #387650;
+    --verde-claro: #e7f0e5;
+    --verde-suave: #f2f6ed;
+    --creme: #faf8f0;
+    --branco: #ffffff;
+    --texto: #26382d;
+    --texto-suave: #647267;
+    --borda: #dce5d9;
+    --sombra: 0 10px 30px rgba(35, 75, 54, 0.08);
+}
+
+/* Define a rolagem suave ao clicar nos links do menu */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* Configura a aparência geral da página */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--creme);
+    color: var(--texto);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* Faz imagens respeitarem o espaço disponível */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove o sublinhado padrão dos links */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Mantém os botões com a mesma fonte do restante do site */
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* Destaca os elementos quando recebem foco pelo teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #9abf83;
+    outline-offset: 4px;
+}
+
+/* =========================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ========================================= */
+
+/* Organiza a logo e o menu na mesma linha */
+.cabecalho {
+    width: 100%;
+    min-height: 86px;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background-color: var(--creme);
+    border-bottom: 1px solid var(--borda);
+}
+
+/* Organiza o símbolo e o nome da marca */
+.marca {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Estiliza o símbolo provisório da logo */
+.marca-simbolo {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background-color: var(--verde-claro);
+    border-radius: 14px;
+    font-size: 25px;
+}
+
+/* Estiliza o nome refloreser */
+.marca-nome {
+    color: var(--verde-escuro);
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* Organiza os links do menu */
+.navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Define a aparência dos links de navegação */
+.navegacao a {
+    color: var(--texto-suave);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+/* Muda a cor do link quando o visitante passa o mouse */
+.navegacao a:hover {
+    color: var(--verde-principal);
+}
+
+/* =========================================
+   3. ÁREA INICIAL DO SITE
+   ========================================= */
+
+/* Divide a apresentação em texto e ilustração */
+.inicio {
+    min-height: 540px;
+    padding: 80px 9%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 55px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            #e3eddc 0,
+            transparent 40%
+        ),
+        var(--creme);
+}
+
+/* Evita que o texto ultrapasse sua coluna */
+.inicio-conteudo {
+    max-width: 610px;
+}
+
+/* Pequeno texto usado acima dos títulos */
+.etiqueta {
+    margin-bottom: 15px;
+    color: var(--verde-principal);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* Título principal da página */
+.inicio h1 {
+    margin-bottom: 22px;
+    color: var(--verde-escuro);
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.12;
+    letter-spacing: -2px;
+}
+
+/* Coloca a segunda parte do título em outra linha */
+.inicio h1 span {
+    display: block;
+    color: var(--verde-principal);
+}
+
+/* Texto descritivo da apresentação */
+.inicio-descricao {
+    max-width: 520px;
+    margin-bottom: 28px;
+    color: var(--texto-suave);
+    font-size: 17px;
+}
+
+/* Botão principal de chamada para ação */
+.botao-principal {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    border: 2px solid var(--verde-principal);
+    border-radius: 12px;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    font-weight: 700;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Efeito do botão ao passar o mouse */
+.botao-principal:hover {
+    background-color: var(--verde-escuro);
+    border-color: var(--verde-escuro);
+    box-shadow: var(--sombra);
+    transform: translateY(-2px);
+}
+
+/* Texto abaixo do botão */
+.texto-apoio {
+    margin-top: 18px;
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+/* Organiza a área reservada à ilustração */
+.inicio-ilustracao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+/* Estiliza a imagem da casa sustentável */
+.inicio-ilustracao img {
+    width: 100%;
+    max-width: 470px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 32px;
+}
+
+/* =========================================
+   4. TÍTULOS DAS SEÇÕES
+   ========================================= */
+
+/* Centraliza os títulos das seções */
+.titulo-secao {
+    max-width: 720px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+/* Títulos secundários */
+.titulo-secao h2,
+.sobre-conteudo h2 {
+    margin-bottom: 15px;
+    color: var(--verde-escuro);
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* Descrição abaixo dos títulos */
+.titulo-secao > p:last-child {
+    color: var(--texto-suave);
+}
+
+/* =========================================
+   5. CARTÕES DE ÁGUA, ENERGIA E ALIMENTOS
+   ========================================= */
+
+/* Espaçamento da seção de recursos */
+.secao-recursos {
+    padding: 85px 9%;
+    background-color: var(--branco);
+}
+
+/* Organiza os três cartões */
+.cartoes-recursos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+/* Aparência individual dos cartões */
+.cartao-recurso {
+    padding: 30px 25px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background-color: var(--creme);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Eleva levemente o cartão ao passar o mouse */
+.cartao-recurso:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra);
+}
+
+/* Caixa do ícone de cada cartão */
+.icone-recurso {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    background-color: var(--verde-claro);
+    font-size: 27px;
+}
+
+/* Título dos cartões */
+.cartao-recurso h3 {
+    margin-bottom: 10px;
+    color: var(--verde-escuro);
+    font-size: 20px;
+}
+
+/* Descrição dos cartões */
+.cartao-recurso p {
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+/* =========================================
+   6. SEÇÃO DE ESTIMATIVAS
+   ========================================= */
+
+/* Fundo suave para diferenciar a seção */
+.secao-estimativa {
+    padding: 85px 9%;
+    background-color: var(--verde-suave);
+}
+
+/* Aparência da área do questionário */
+#area-questionario {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background-color: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* Texto da área do questionário */
+#area-questionario p {
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+/* Espaço para os resultados calculados */
+#resultado-estimativa {
+    max-width: 800px;
+    margin: 25px auto 0;
+}
+
+/* =========================================
+   7. SEÇÃO DE INICIATIVAS E ONGS
+   ========================================= */
+
+/* Espaçamento da seção de iniciativas */
+.secao-iniciativas {
+    padding: 85px 9%;
+    background-color: var(--branco);
+}
+
+/* Área que futuramente receberá os cartões de iniciativas */
+#lista-iniciativas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Estiliza o texto inicial enquanto não existem recomendações */
+#lista-iniciativas > p {
+    grid-column: 1 / -1;
+    padding: 28px;
+    border: 1px dashed var(--borda);
+    border-radius: 16px;
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+/* =========================================
+   8. SEÇÃO DE CADASTRO DE AÇÕES
+   ========================================= */
+
+/* Fundo verde muito claro para destacar os registros */
+.secao-acoes {
+    padding: 85px 9%;
+    background-color: var(--verde-suave);
+}
+
+/* Área do formulário de ações */
+#formulario-acoes {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background-color: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* Texto que aparece antes de o formulário ser criado */
+#formulario-acoes > p {
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+/* Espaço para a lista de ações cadastradas */
+#lista-acoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 30px auto 0;
+}
+
+/* =========================================
+   9. SEÇÃO SOBRE O PROJETO
+   ========================================= */
+
+/* Centraliza o conteúdo e limita sua largura */
+.secao-sobre {
+    padding: 90px 9%;
+    background-color: var(--branco);
+}
+
+/* Área de texto sobre o refloreser */
+.sobre-conteudo {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Espaçamento dos parágrafos */
+.sobre-conteudo p:not(.etiqueta) {
+    margin-top: 18px;
+    color: var(--texto-suave);
+}
+
+/* =========================================
+   10. RODAPÉ
+   ========================================= */
+
+/* Organiza as informações finais da página */
+.rodape {
+    padding: 40px 9%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    text-align: center;
+}
+
+/* Ajusta a marca para aparecer no fundo escuro */
+.marca-rodape .marca-nome {
+    color: var(--branco);
+}
+
+/* Símbolo da marca no rodapé */
+.marca-rodape > span:first-child {
+    font-size: 27px;
+}
+
+/* Textos menores do rodapé */
+.rodape > p {
+    color: #e0e9df;
+    font-size: 14px;
+}
+
+.rodape .rodape-creditos {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* =========================================
+   11. ADAPTAÇÃO PARA TABLETS
+   ========================================= */
+
+/* Aplica estes estilos quando a tela tem até 950 pixels */
+@media (max-width: 950px) {
+    .cabecalho {
+        padding-right: 5%;
+        padding-left: 5%;
+        flex-wrap: wrap;
+    }
+
+    .navegacao {
+        gap: 15px;
+    }
+
+    .inicio {
+        padding: 65px 6%;
+        gap: 30px;
+    }
+
+    .secao-recursos,
+    .secao-estimativa,
+    .secao-iniciativas,
+    .secao-acoes,
+    .secao-sobre {
+        padding-right: 6%;
+        padding-left: 6%;
+    }
+
+    .cartoes-recursos {
+        gap: 16px;
+    }
+
+    .cartao-recurso {
+        padding: 23px 18px;
+    }
+}
+
+/* =========================================
+   12. ADAPTAÇÃO PARA CELULARES
+   ========================================= */
+
+/* Aplica estes estilos quando a tela tem até 650 pixels */
+@media (max-width: 650px) {
+    /* Coloca a marca acima do menu */
+    .cabecalho {
+        padding: 18px 5%;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .marca-nome {
+        font-size: 23px;
+    }
+
+    /* Permite que os links ocupem várias linhas */
+    .navegacao {
+        width: 100%;
+        justify-content: center;
+        gap: 10px 18px;
+    }
+
+    .navegacao a {
+        font-size: 13px;
+    }
+
+    /* Coloca o texto e a imagem um abaixo do outro */
+    .inicio {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 55px 7%;
+        gap: 35px;
+    }
+
+    .inicio h1 {
+        font-size: 43px;
+        letter-spacing: -1.5px;
+    }
+
+    .inicio-descricao {
+        font-size: 15px;
+    }
+
+    .inicio-ilustracao img {
+        max-width: 360px;
+    }
+
+    /* Reduz os espaços das seções */
+    .secao-recursos,
+    .secao-estimativa,
+    .secao-iniciativas,
+    .secao-acoes,
+    .secao-sobre {
+        padding: 60px 7%;
+    }
+
+    /* Empilha os cartões de recursos */
+    .cartoes-recursos {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .cartao-recurso {
+        padding: 25px;
+    }
+
+    /* Ajusta os títulos para telas menores */
+    .titulo-secao h2,
+    .sobre-conteudo h2 {
+        font-size: 30px;
+    }
+
+    /* Reduz o espaço interno das áreas de formulário */
+    #area-questionario,
+    #formulario-acoes {
+        padding: 22px 18px;
+    }
+
+    /* Mostra iniciativas e ações em uma única coluna */
+    #lista-iniciativas,
+    #lista-acoes {
+        grid-template-columns: 1fr;
+    }
+
+    .rodape {
+        padding: 35px 7%;
+    }
+}
+
+/* =========================================
+   13. RESPEITO À PREFERÊNCIA DE MOVIMENTO
+   ========================================= */
+
+/* Desativa animações suaves para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* =========================================
+   14. CAMPOS CRIADOS PELO JAVASCRIPT
+   ========================================= */
+
+/* Organiza os campos dos formulários */
+#questionario-consumo,
+#formulario-nova-acao {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Estiliza os títulos dos formulários */
+#questionario-consumo h3,
+#formulario-nova-acao h3 {
+    color: var(--verde-escuro);
+    font-size: 23px;
+    line-height: 1.3;
+}
+
+/* Estiliza os textos explicativos dos formulários */
+#questionario-consumo > p,
+#formulario-nova-acao > p {
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+/* Organiza cada rótulo junto de seu campo */
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* Estiliza os nomes dos campos */
+.campo-formulario label {
+    color: var(--verde-escuro);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Estiliza caixas de texto, números e listas */
+.campo-formulario input,
+.campo-formulario select {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 13px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: var(--branco);
+    color: var(--texto);
+}
+
+/* Destaca os campos quando são selecionados */
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    border-color: var(--verde-principal);
+    outline: 2px solid var(--verde-claro);
+}
+
+/* Evita que os botões fiquem excessivamente largos */
+#questionario-consumo .botao-principal,
+#formulario-nova-acao .botao-principal,
+#lista-acoes .botao-principal {
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+/* Organiza o título e o resultado da estimativa */
+#resultado-estimativa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+/* Estiliza o título dos resultados */
+#resultado-estimativa h3 {
+    color: var(--verde-escuro);
+    font-size: 23px;
+}
+
+/* Estiliza os textos dos resultados */
+#resultado-estimativa p {
+    color: var(--texto-suave);
+}
+
+/* Espaço entre as informações de cada cartão de ação */
+#lista-acoes .cartao-recurso p {
+    margin-top: 8px;
+    overflow-wrap: anywhere;
+}
+
+/* Ajusta o botão de exclusão para telas pequenas */
+@media (max-width: 650px) {
+    #questionario-consumo .botao-principal,
+    #formulario-nova-acao .botao-principal,
+    #lista-acoes .botao-principal {
+        width: 100%;
+        align-self: stretch;
+    }
+}

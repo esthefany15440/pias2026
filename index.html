@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define o conjunto de caracteres para aceitar acentos -->
+    <meta charset="UTF-8">
+
+    <!-- Faz o site se adaptar a celulares e computadores -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Texto que aparece na aba do navegador -->
+    <title>refloreser | Pequenas ações, grandes mudanças</title>
+
+    <!-- Descrição do site para mecanismos de busca -->
+    <meta name="description" content="Descubra como reduzir o consumo de água, energia e o desperdício de alimentos.">
+
+    <!-- Conecta o arquivo de estilos ao HTML -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Carrega o JavaScript depois que o HTML for interpretado -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Cabeçalho com a marca e a navegação principal -->
+    <header class="cabecalho">
+        <a class="marca" href="#inicio" aria-label="refloreser - página inicial">
+            <!-- Logo provisória feita com texto e símbolo -->
+            <span class="marca-simbolo" aria-hidden="true">🌱</span>
+            <span class="marca-nome">refloreser</span>
+        </a>
+
+        <nav class="navegacao" aria-label="Navegação principal">
+            <a href="#inicio">Início</a>
+            <a href="#estimativa">Minha estimativa</a>
+            <a href="#acoes">Ações sustentáveis</a>
+            <a href="#sobre">Sobre o projeto</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+        <!-- Apresentação do projeto -->
+        <section class="inicio" id="inicio">
+            <div class="inicio-conteudo">
+                <p class="etiqueta">UM FUTURO MAIS SUSTENTÁVEL</p>
+
+                <h1>
+                    Pequenas mudanças.
+                    <span>Um mundo melhor.</span>
+                </h1>
+
+                <p class="inicio-descricao">
+                    Descubra seus hábitos de consumo, reduza desperdícios
+                    e transforme suas atitudes em ações positivas para
+                    sua casa e sua comunidade.
+                </p>
+
+                <!-- Botão que leva à seção de estimativa -->
+                <a class="botao-principal" href="#estimativa">
+                    Começar minha estimativa
+                </a>
+
+                <p class="texto-apoio">
+                    Água, energia e alimentos: cada recurso importa.
+                </p>
+            </div>
+
+            <!-- Espaço reservado para a ilustração da página inicial -->
+            <div class="inicio-ilustracao">
+                <img
+                    src="imagens/casa-sustentavel.png"
+                    alt="Ilustração de uma casa cercada por plantas, representando hábitos sustentáveis"
+                >
+            </div>
+        </section>
+
+        <!-- Apresentação dos três temas do projeto -->
+        <section class="secao-recursos" aria-labelledby="titulo-recursos">
+            <div class="titulo-secao">
+                <p class="etiqueta">POR ONDE COMEÇAR?</p>
+                <h2 id="titulo-recursos">Cuide dos recursos do dia a dia</h2>
+                <p>
+                    Entenda seus hábitos e encontre oportunidades para
+                    consumir de maneira mais consciente.
+                </p>
+            </div>
+
+            <div class="cartoes-recursos">
+                <!-- Cartão sobre economia de água -->
+                <article class="cartao-recurso">
+                    <span class="icone-recurso" aria-hidden="true">💧</span>
+                    <h3>Economia de água</h3>
+                    <p>
+                        Observe o uso da água em banhos, torneiras,
+                        limpeza e outras atividades.
+                    </p>
+                </article>
+
+                <!-- Cartão sobre economia de energia -->
+                <article class="cartao-recurso">
+                    <span class="icone-recurso" aria-hidden="true">⚡</span>
+                    <h3>Energia consciente</h3>
+                    <p>
+                        Identifique hábitos que podem ajudar a diminuir
+                        o consumo de energia elétrica.
+                    </p>
+                </article>
+
+                <!-- Cartão sobre desperdício de alimentos -->
+                <article class="cartao-recurso">
+                    <span class="icone-recurso" aria-hidden="true">🥕</span>
+                    <h3>Menos desperdício</h3>
+                    <p>
+                        Planeje refeições, aproveite os alimentos
+                        e evite jogar comida fora.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Área onde futuramente será feito o questionário -->
+        <section class="secao-estimativa" id="estimativa">
+            <div class="titulo-secao">
+                <p class="etiqueta">PRIMEIRO PASSO</p>
+                <h2>Conheça o consumo da sua casa</h2>
+                <p>
+                    Responda a algumas perguntas sobre sua rotina para
+                    obter uma estimativa de consumo e desperdício.
+                </p>
+            </div>
+
+            <!-- O JavaScript será responsável por preencher esta área -->
+            <div id="area-questionario">
+                <p>
+                    O questionário de estimativa será desenvolvido
+                    na próxima etapa.
+                </p>
+            </div>
+
+            <!-- Área reservada para mostrar os resultados -->
+            <div id="resultado-estimativa" aria-live="polite"></div>
+        </section>
+
+        <!-- Área destinada às recomendações de iniciativas e ONGs -->
+        <section class="secao-iniciativas" id="iniciativas">
+            <div class="titulo-secao">
+                <p class="etiqueta">JUNTOS FAZEMOS A DIFERENÇA</p>
+                <h2>Conheça iniciativas sustentáveis</h2>
+                <p>
+                    Futuramente, você encontrará aqui organizações e
+                    projetos relacionados aos temas identificados na
+                    sua estimativa.
+                </p>
+            </div>
+
+            <!-- As recomendações serão inseridas futuramente -->
+            <div id="lista-iniciativas">
+                <p>
+                    As iniciativas recomendadas aparecerão aqui
+                    quando essa funcionalidade for implementada.
+                </p>
+            </div>
+        </section>
+
+        <!-- Área para registrar ações sustentáveis -->
+        <section class="secao-acoes" id="acoes">
+            <div class="titulo-secao">
+                <p class="etiqueta">ATITUDE QUE TRANSFORMA</p>
+                <h2>Registre uma ação sustentável</h2>
+                <p>
+                    Registre iniciativas realizadas por moradores
+                    para reduzir desperdícios e melhorar a comunidade.
+                </p>
+            </div>
+
+            <!-- O formulário será criado em uma próxima etapa -->
+            <div id="formulario-acoes">
+                <p>
+                    O formulário de cadastro será desenvolvido
+                    na próxima etapa.
+                </p>
+            </div>
+
+            <!-- Os registros salvos serão exibidos nesta área -->
+            <div id="lista-acoes" aria-live="polite"></div>
+        </section>
+
+        <!-- Explicação sobre o propósito do site -->
+        <section class="secao-sobre" id="sobre">
+            <div class="sobre-conteudo">
+                <p class="etiqueta">NOSSO PROPÓSITO</p>
+                <h2>O futuro começa nas nossas escolhas</h2>
+
+                <p>
+                    O refloreser é um projeto que busca incentivar
+                    hábitos de consumo responsáveis, aproximar moradores
+                    de iniciativas sustentáveis e valorizar as ações
+                    que fazem a diferença nas comunidades.
+                </p>
+
+                <p>
+                    Nosso projeto está relacionado ao ODS 12, que trata
+                    do consumo e da produção responsáveis, e ao ODS 17,
+                    que incentiva parcerias para alcançar objetivos
+                    de desenvolvimento sustentável.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé da página -->
+    <footer class="rodape">
+        <a class="marca marca-rodape" href="#inicio">
+            <span aria-hidden="true">🌱</span>
+            <span class="marca-nome">refloreser</span>
+        </a>
+
+        <p>
+            Pequenas ações podem inspirar grandes mudanças.
+        </p>
+
+        <p class="rodape-creditos">
+            Projeto estudantil de sustentabilidade.
+        </p>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
