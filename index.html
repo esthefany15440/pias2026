@@ -1,229 +1,975 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Define o conjunto de caracteres para aceitar acentos -->
+    <!-- Conjunto de caracteres: aceita acentos -->
     <meta charset="UTF-8">
 
-    <!-- Faz o site se adaptar a celulares e computadores -->
+    <!-- Adapta o site para celular e computador -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Texto que aparece na aba do navegador -->
-    <title>refloreser | Pequenas ações, grandes mudanças</title>
+    <title>refloreser | Laboratório do consumo da sua casa</title>
 
-    <!-- Descrição do site para mecanismos de busca -->
-    <meta name="description" content="Descubra como reduzir o consumo de água, energia e o desperdício de alimentos.">
+    <meta name="description" content="Meça o consumo de água, energia e o desperdício de alimentos da sua casa, compare com médias brasileiras e encontre iniciativas em Foz do Iguaçu.">
 
-    <!-- Conecta o arquivo de estilos ao HTML -->
+    <!-- Fonte: IBM Plex Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Estilos do site -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Carrega o JavaScript depois que o HTML for interpretado -->
+    <!-- O JavaScript é carregado depois que o HTML for lido (defer) -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <!-- Cabeçalho com a marca e a navegação principal -->
+
+    <!-- =====================================================
+         CABEÇALHO
+         ===================================================== -->
     <header class="cabecalho">
         <a class="marca" href="#inicio" aria-label="refloreser - página inicial">
-            <!-- Logo provisória feita com texto e símbolo -->
-            <span class="marca-simbolo" aria-hidden="true">🌱</span>
+            <svg class="marca-simbolo" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29 V15" /><path d="M16 19 C9 18 5 13 6 6 C13 7 17 12 16 19 Z" /><path d="M16 15 C21 14 26 10 26 3 C20 4 16 9 16 15 Z" /></svg>
             <span class="marca-nome">refloreser</span>
         </a>
 
         <nav class="navegacao" aria-label="Navegação principal">
-            <a href="#inicio">Início</a>
+            <a href="#protocolo">Como funciona</a>
             <a href="#estimativa">Minha estimativa</a>
-            <a href="#acoes">Ações sustentáveis</a>
-            <a href="#sobre">Sobre o projeto</a>
+            <a href="#iniciativas">Iniciativas</a>
+            <a href="#acoes">Ações</a>
+            <a href="#sobre">Sobre</a>
         </nav>
     </header>
 
-    <!-- Conteúdo principal da página -->
     <main>
-        <!-- Apresentação do projeto -->
+
+        <!-- =====================================================
+             1. INÍCIO (HERO)
+             ===================================================== -->
         <section class="inicio" id="inicio">
             <div class="inicio-conteudo">
-                <p class="etiqueta">UM FUTURO MAIS SUSTENTÁVEL</p>
 
                 <h1>
-                    Pequenas mudanças.
-                    <span>Um mundo melhor.</span>
+                    Pequenas mudanças.<br>
+                    Um mundo melhor.
                 </h1>
 
                 <p class="inicio-descricao">
-                    Descubra seus hábitos de consumo, reduza desperdícios
-                    e transforme suas atitudes em ações positivas para
-                    sua casa e sua comunidade.
+                    Estime o consumo de água, energia e o desperdício de alimentos
+                    da sua casa, compare com médias brasileiras e conheça
+                    iniciativas de Foz do Iguaçu ligadas a cada tema.
                 </p>
 
-                <!-- Botão que leva à seção de estimativa -->
-                <a class="botao-principal" href="#estimativa">
-                    Começar minha estimativa
-                </a>
-
-                <p class="texto-apoio">
-                    Água, energia e alimentos: cada recurso importa.
-                </p>
+                <div class="inicio-botoes">
+                    <a class="botao botao-principal" href="#estimativa">Fazer minha estimativa</a>
+                    <a class="botao botao-contorno" href="#protocolo">Como funciona</a>
+                </div>
             </div>
 
-            <!-- Espaço reservado para a ilustração da página inicial -->
+            <!-- Ilustração em SVG: casa ligada a três instrumentos -->
             <div class="inicio-ilustracao">
-                <img
-                    src="imagens/casa-sustentavel.png"
-                    alt="Ilustração de uma casa cercada por plantas, representando hábitos sustentáveis"
-                >
+                <svg class="bancada" viewBox="0 0 520 450" role="img"
+                     aria-labelledby="titulo-bancada">
+                    <title id="titulo-bancada">
+                        Ilustração de uma casa ligada por canos a três instrumentos:
+                        um tanque de água, um medidor de energia e uma balança de alimentos.
+                    </title>
+
+                    <!-- Canos que saem da casa (a classe "fluxo" anima o tracejado) -->
+                    <path class="cano" d="M175 300 H215 V95 H262" />
+                    <path class="cano" d="M175 315 H262" />
+                    <path class="cano" d="M175 330 H215 V385 H262" />
+                    <path class="fluxo fluxo-agua" d="M175 300 H215 V95 H262" />
+                    <path class="fluxo fluxo-energia" d="M175 315 H262" />
+                    <path class="fluxo fluxo-alimento" d="M175 330 H215 V385 H262" />
+
+                    <!-- Casa -->
+                    <g class="casa">
+                        <polygon points="20,250 100,185 180,250" class="casa-telhado" />
+                        <rect x="35" y="250" width="130" height="130" class="casa-parede" />
+                        <rect x="55" y="275" width="38" height="32" class="casa-janela" />
+                        <line x1="74" y1="275" x2="74" y2="307" class="casa-detalhe" />
+                        <line x1="55" y1="291" x2="93" y2="291" class="casa-detalhe" />
+                        <rect x="112" y="300" width="34" height="80" class="casa-porta" />
+                        <!-- Broto no telhado: símbolo do projeto -->
+                        <path d="M100 185 V160" class="broto-caule" />
+                        <path d="M100 168 C88 160 84 150 86 142 C96 146 102 156 100 168 Z" class="broto-folha" />
+                        <path d="M100 162 C112 154 118 146 116 138 C106 141 99 150 100 162 Z" class="broto-folha" />
+                        <line x1="10" y1="380" x2="190" y2="380" class="chao" />
+                    </g>
+
+                    <!-- Instrumento 1: tanque de água -->
+                    <g class="instrumento">
+                        <defs>
+                            <clipPath id="corte-tanque-hero">
+                                <rect x="272" y="30" width="120" height="130" rx="14" />
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#corte-tanque-hero)">
+                            <g class="liquido-hero">
+                                <path class="onda" d="M232 95 Q242 88 252 95 T272 95 T292 95 T312 95 T332 95 T352 95 T372 95 T392 95 T412 95 T432 95 T452 95 T472 95 V200 H232 Z" />
+                            </g>
+                        </g>
+                        <rect x="272" y="30" width="120" height="130" rx="14" class="vidro" />
+                        <line x1="400" y1="40" x2="410" y2="40" class="marca-escala" />
+                        <line x1="400" y1="72" x2="406" y2="72" class="marca-escala" />
+                        <line x1="400" y1="104" x2="410" y2="104" class="marca-escala" />
+                        <line x1="400" y1="136" x2="406" y2="136" class="marca-escala" />
+                        <text x="272" y="184" class="rotulo-svg">Água · L/dia</text>
+                    </g>
+
+                    <!-- Instrumento 2: medidor de energia -->
+                    <g class="instrumento">
+                        <path d="M282 310 A68 68 0 1 1 418 310" class="mostrador-arco" />
+                        <path d="M282 310 A68 68 0 0 1 300 262" class="mostrador-faixa faixa-ok" />
+                        <path d="M400 262 A68 68 0 0 1 418 310" class="mostrador-faixa faixa-alerta" />
+                        <line class="ponteiro-hero" x1="350" y1="310" x2="350" y2="256" />
+                        <circle cx="350" cy="310" r="7" class="eixo" />
+                        <text x="282" y="335" class="rotulo-svg">Energia · kWh/mês</text>
+                    </g>
+
+                    <!-- Instrumento 3: balança de alimentos -->
+                    <g class="instrumento">
+                        <line x1="350" y1="440" x2="350" y2="390" class="balanca-haste" />
+                        <rect x="318" y="438" width="64" height="8" rx="3" class="balanca-base" />
+                        <g class="braco-hero">
+                            <line x1="290" y1="390" x2="410" y2="390" class="balanca-braco" />
+                            <path d="M272 410 H308 L300 420 H280 Z" class="balanca-prato" />
+                            <line x1="290" y1="390" x2="282" y2="410" class="balanca-fio" />
+                            <line x1="290" y1="390" x2="298" y2="410" class="balanca-fio" />
+                            <path d="M392 410 H428 L420 420 H400 Z" class="balanca-prato" />
+                            <line x1="410" y1="390" x2="402" y2="410" class="balanca-fio" />
+                            <line x1="410" y1="390" x2="418" y2="410" class="balanca-fio" />
+                        </g>
+                        <circle cx="350" cy="390" r="5" class="eixo" />
+                        <text x="430" y="368" class="rotulo-svg" text-anchor="end">Alimentos · kg</text>
+                    </g>
+                </svg>
             </div>
         </section>
 
-        <!-- Apresentação dos três temas do projeto -->
-        <section class="secao-recursos" aria-labelledby="titulo-recursos">
+        <!-- =====================================================
+             2. PROTOCOLO (COMO FUNCIONA)
+             ===================================================== -->
+        <section class="secao" id="protocolo">
             <div class="titulo-secao">
-                <p class="etiqueta">POR ONDE COMEÇAR?</p>
-                <h2 id="titulo-recursos">Cuide dos recursos do dia a dia</h2>
+                <h2>Como funciona</h2>
                 <p>
-                    Entenda seus hábitos e encontre oportunidades para
-                    consumir de maneira mais consciente.
+                    A estimativa multiplica os hábitos da casa por valores de
+                    referência publicados por órgãos oficiais e pesquisas.
                 </p>
             </div>
 
-            <div class="cartoes-recursos">
-                <!-- Cartão sobre economia de água -->
-                <article class="cartao-recurso">
-                    <span class="icone-recurso" aria-hidden="true">💧</span>
-                    <h3>Economia de água</h3>
+            <ol class="protocolo">
+                <li class="passo">
+                    <svg class="passo-icone" viewBox="0 0 64 64" aria-hidden="true">
+                        <rect x="14" y="8" width="36" height="48" rx="4" />
+                        <line x1="22" y1="20" x2="42" y2="20" />
+                        <line x1="22" y1="30" x2="42" y2="30" />
+                        <line x1="22" y1="40" x2="34" y2="40" />
+                        <rect x="24" y="4" width="16" height="8" rx="2" />
+                    </svg>
+                    <h3>Responda sobre a rotina</h3>
                     <p>
-                        Observe o uso da água em banhos, torneiras,
-                        limpeza e outras atividades.
+                        Você informa a rotina da casa: tempo de banho, aparelhos
+                        ligados e quanto alimento vai para o lixo.
                     </p>
+                </li>
+                <li class="passo">
+                    <svg class="passo-icone" viewBox="0 0 64 64" aria-hidden="true">
+                        <path d="M10 44 A22 22 0 0 1 54 44" />
+                        <line x1="32" y1="44" x2="44" y2="28" />
+                        <circle cx="32" cy="44" r="3" />
+                        <line x1="14" y1="52" x2="50" y2="52" />
+                    </svg>
+                    <h3>Veja o cálculo</h3>
+                    <p>
+                        O site multiplica cada hábito por valores de referência
+                        publicados (vazão, potência, peso) e soma tudo.
+                    </p>
+                </li>
+                <li class="passo">
+                    <svg class="passo-icone" viewBox="0 0 64 64" aria-hidden="true">
+                        <path d="M32 56 V30" />
+                        <path d="M32 38 C20 36 14 26 16 16 C28 18 34 28 32 38 Z" />
+                        <path d="M32 30 C42 28 48 20 48 10 C38 12 31 20 32 30 Z" />
+                    </svg>
+                    <h3>Escolha o que mudar</h3>
+                    <p>
+                        O resultado mostra o ponto de atenção, quanto dá para economizar
+                        e iniciativas reais de Foz do Iguaçu ligadas ao tema.
+                    </p>
+                </li>
+            </ol>
+
+            <!-- Exemplo da fórmula: explica o cálculo -->
+            <div class="formula">
+                <p class="formula-rotulo">Exemplo de cálculo</p>
+                <p class="formula-conta">
+                    <span class="cor-agua">4 L/min</span>
+                    <span class="op">×</span> 10 min
+                    <span class="op">×</span> 1 banho
+                    <span class="op">=</span>
+                    <strong>40 litros por pessoa, por dia</strong>
+                </p>
+                <p class="formula-nota">
+                    Vazão média de chuveiro elétrico medida em estudo da USP.
+                    Todas as referências estão na seção <a href="#fontes">Fontes</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             3. FICHAS TÉCNICAS DOS RECURSOS
+             ===================================================== -->
+        <section class="secao secao-fichas" aria-labelledby="titulo-fichas">
+            <div class="titulo-secao">
+                <h2 id="titulo-fichas">Médias de referência</h2>
+            </div>
+
+            <div class="fichas">
+                <article class="ficha ficha-agua">
+                    <header class="ficha-topo">
+                        <svg class="ficha-icone" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M24 6 C16 18 12 24 12 30 A12 12 0 0 0 36 30 C36 24 32 18 24 6 Z" />
+                        </svg>
+                    </header>
+                    <h3>Água</h3>
+                    <p class="ficha-numero">180 <small>L/pessoa/dia</small></p>
+                    <p class="ficha-texto">
+                        Média brasileira segundo o Sinisa (Ministério das Cidades).
+                        A ONU considera 110 L suficientes para as necessidades básicas.
+                    </p>
+                    <p class="ficha-maior">Maiores usos em casa: descarga e chuveiro.</p>
                 </article>
 
-                <!-- Cartão sobre economia de energia -->
-                <article class="cartao-recurso">
-                    <span class="icone-recurso" aria-hidden="true">⚡</span>
-                    <h3>Energia consciente</h3>
-                    <p>
-                        Identifique hábitos que podem ajudar a diminuir
-                        o consumo de energia elétrica.
+                <article class="ficha ficha-energia">
+                    <header class="ficha-topo">
+                        <svg class="ficha-icone" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M27 4 L10 28 H23 L20 44 L38 18 H25 Z" />
+                        </svg>
+                    </header>
+                    <h3>Energia elétrica</h3>
+                    <p class="ficha-numero">216,8 <small>kWh/casa/mês</small></p>
+                    <p class="ficha-texto">
+                        Consumo médio residencial na região Sul em 2025, o maior do país
+                        (EPE). A média nacional fica perto de 177 kWh.
                     </p>
+                    <p class="ficha-maior">Maiores usos em casa: chuveiro e geladeira (Copel).</p>
                 </article>
 
-                <!-- Cartão sobre desperdício de alimentos -->
-                <article class="cartao-recurso">
-                    <span class="icone-recurso" aria-hidden="true">🥕</span>
-                    <h3>Menos desperdício</h3>
-                    <p>
-                        Planeje refeições, aproveite os alimentos
-                        e evite jogar comida fora.
+                <article class="ficha ficha-alimento">
+                    <header class="ficha-topo">
+                        <svg class="ficha-icone" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M24 14 C14 10 6 18 8 28 C10 38 18 44 24 40 C30 44 38 38 40 28 C42 18 34 10 24 14 Z" />
+                            <path d="M24 14 C24 9 27 6 31 5" />
+                        </svg>
+                    </header>
+                    <h3>Alimentos</h3>
+                    <p class="ficha-numero">94 <small>kg/pessoa/ano</small></p>
+                    <p class="ficha-texto">
+                        Desperdício doméstico no Brasil, incluindo cascas e ossos
+                        (Índice de Desperdício de Alimentos 2024, PNUMA).
                     </p>
+                    <p class="ficha-maior">Equivale a cerca de 7,8 kg por pessoa, por mês.</p>
                 </article>
             </div>
         </section>
 
-        <!-- Área onde futuramente será feito o questionário -->
-        <section class="secao-estimativa" id="estimativa">
+        <!-- =====================================================
+             4. ESTIMATIVA (QUESTIONÁRIO + MONITOR AO VIVO)
+             ===================================================== -->
+        <section class="secao secao-estimativa" id="estimativa">
             <div class="titulo-secao">
-                <p class="etiqueta">PRIMEIRO PASSO</p>
-                <h2>Conheça o consumo da sua casa</h2>
+                <h2>Estimativa de consumo</h2>
                 <p>
-                    Responda a algumas perguntas sobre sua rotina para
-                    obter uma estimativa de consumo e desperdício.
+                    Responda às perguntas em quatro etapas. Os indicadores
+                    são atualizados a cada resposta.
                 </p>
             </div>
 
-            <!-- O JavaScript será responsável por preencher esta área -->
-            <div id="area-questionario">
-                <p>
-                    O questionário de estimativa será desenvolvido
-                    na próxima etapa.
-                </p>
+            <div class="bancada-medicao">
+
+                <!-- Lado esquerdo: questionário em etapas -->
+                <form id="questionario" class="questionario" novalidate>
+
+                    <!-- Indicador de etapas -->
+                    <ol class="etapas" aria-label="Etapas do questionário">
+                        <li><button type="button" class="etapa-botao ativa" data-etapa="0">Casa</button></li>
+                        <li><button type="button" class="etapa-botao" data-etapa="1">Água</button></li>
+                        <li><button type="button" class="etapa-botao" data-etapa="2">Energia</button></li>
+                        <li><button type="button" class="etapa-botao" data-etapa="3">Alimentos</button></li>
+                    </ol>
+
+                    <!-- ETAPA 1: CASA -->
+                    <fieldset class="etapa ativa" data-etapa="0">
+                        <legend>Quem mora na casa</legend>
+
+                        <div class="controle">
+                            <label for="moradores">Quantas pessoas moram na casa?</label>
+                            <div class="controle-linha">
+                                <input type="range" id="moradores" name="moradores" min="1" max="10" value="4">
+                                <output for="moradores" data-unidade="pessoas">4 pessoas</output>
+                            </div>
+                        </div>
+
+                        <p class="dica">
+                            O número de moradores divide o consumo da casa
+                            para comparar com médias por pessoa.
+                        </p>
+                    </fieldset>
+
+                    <!-- ETAPA 2: ÁGUA -->
+                    <fieldset class="etapa" data-etapa="1">
+                        <legend>Água</legend>
+
+                        <div class="controle">
+                            <p class="controle-titulo">Como a água do chuveiro é aquecida?</p>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="tipoChuveiro" value="eletrico" checked>
+                                    <span>Chuveiro elétrico <small>cerca de 4 L/min</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="tipoChuveiro" value="gas">
+                                    <span>Gás, solar ou boiler <small>cerca de 9 L/min</small></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="minutosBanho">Duração de cada banho</label>
+                            <div class="controle-linha">
+                                <input type="range" id="minutosBanho" name="minutosBanho" min="1" max="30" value="10">
+                                <output for="minutosBanho" data-unidade="min">10 min</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="banhosDia">Banhos por dia, por pessoa</label>
+                            <div class="controle-linha">
+                                <input type="range" id="banhosDia" name="banhosDia" min="1" max="3" value="1">
+                                <output for="banhosDia" data-unidade="banho(s)">1 banho(s)</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <p class="controle-titulo">Ao escovar os dentes, a torneira fica...</p>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="torneiraDentes" value="aberta">
+                                    <span>Aberta <small>cerca de 12 L por escovação</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="torneiraDentes" value="fechada" checked>
+                                    <span>Fechada <small>cerca de 0,5 L</small></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="escovacoes">Escovações por dia, por pessoa</label>
+                            <div class="controle-linha">
+                                <input type="range" id="escovacoes" name="escovacoes" min="1" max="4" value="3">
+                                <output for="escovacoes" data-unidade="vezes">3 vezes</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="descargas">Descargas por dia, por pessoa</label>
+                            <div class="controle-linha">
+                                <input type="range" id="descargas" name="descargas" min="1" max="10" value="5">
+                                <output for="descargas" data-unidade="vezes">5 vezes</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <p class="controle-titulo">Tipo de descarga</p>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="tipoDescarga" value="6.8" checked>
+                                    <span>Caixa acoplada <small>6,8 L por acionamento</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="tipoDescarga" value="12">
+                                    <span>Válvula antiga <small>cerca de 12 L</small></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="minutosLouca">Torneira aberta lavando louça, por dia</label>
+                            <div class="controle-linha">
+                                <input type="range" id="minutosLouca" name="minutosLouca" min="0" max="60" value="15">
+                                <output for="minutosLouca" data-unidade="min">15 min</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="lavagensRoupa">Máquina de lavar roupa, por semana</label>
+                            <div class="controle-linha">
+                                <input type="range" id="lavagensRoupa" name="lavagensRoupa" min="0" max="14" value="3">
+                                <output for="lavagensRoupa" data-unidade="lavagens">3 lavagens</output>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- ETAPA 3: ENERGIA -->
+                    <fieldset class="etapa" data-etapa="2">
+                        <legend>Energia elétrica</legend>
+
+                        <!-- Este bloco some se o chuveiro não for elétrico (ver script.js) -->
+                        <div class="controle" id="bloco-chuveiro-eletrico">
+                            <p class="controle-titulo">Potência do chuveiro elétrico</p>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="potenciaChuveiro" value="5500" checked>
+                                    <span>5.500 W <small>modelo comum</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="potenciaChuveiro" value="7500">
+                                    <span>7.500 W <small>modelo potente</small></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle" id="bloco-chave">
+                            <p class="controle-titulo">Posição da chave do chuveiro na maior parte do ano</p>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="chaveChuveiro" value="inverno" checked>
+                                    <span>Inverno <small>potência máxima</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="chaveChuveiro" value="verao">
+                                    <span>Verão <small>cerca de 30% menos</small></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <p class="dica" id="aviso-chuveiro-gas" hidden>
+                            Seu chuveiro não é elétrico, então ele não entra
+                            na conta de energia elétrica.
+                        </p>
+
+                        <div class="controle">
+                            <label for="geladeiras">Geladeiras e freezers ligados</label>
+                            <div class="controle-linha">
+                                <input type="range" id="geladeiras" name="geladeiras" min="0" max="3" value="1">
+                                <output for="geladeiras" data-unidade="aparelho(s)">1 aparelho(s)</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="horasAr">Ar-condicionado ligado, horas por dia</label>
+                            <div class="controle-linha">
+                                <input type="range" id="horasAr" name="horasAr" min="0" max="24" value="0">
+                                <output for="horasAr" data-unidade="h">0 h</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="horasTv">Televisão ligada, horas por dia</label>
+                            <div class="controle-linha">
+                                <input type="range" id="horasTv" name="horasTv" min="0" max="16" value="4">
+                                <output for="horasTv" data-unidade="h">4 h</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="lampadas">Lâmpadas acesas ao mesmo tempo, à noite</label>
+                            <div class="controle-linha">
+                                <input type="range" id="lampadas" name="lampadas" min="0" max="20" value="5">
+                                <output for="lampadas" data-unidade="lâmpadas">5 lâmpadas</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="horasLuz">Horas com essas lâmpadas acesas, por dia</label>
+                            <div class="controle-linha">
+                                <input type="range" id="horasLuz" name="horasLuz" min="0" max="12" value="5">
+                                <output for="horasLuz" data-unidade="h">5 h</output>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <p class="controle-titulo">Tipo de lâmpada mais usado</p>
+                            <div class="opcoes opcoes-3">
+                                <label class="opcao">
+                                    <input type="radio" name="tipoLampada" value="9" checked>
+                                    <span>LED <small>9 W</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="tipoLampada" value="15">
+                                    <span>Fluorescente <small>15 W</small></span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="tipoLampada" value="60">
+                                    <span>Incandescente <small>60 W</small></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <label for="horasFerro">Ferro de passar, horas por mês</label>
+                            <div class="controle-linha">
+                                <input type="range" id="horasFerro" name="horasFerro" min="0" max="20" value="4">
+                                <output for="horasFerro" data-unidade="h">4 h</output>
+                            </div>
+                        </div>
+
+                        <p class="dica">
+                            A máquina de lavar usa o número de lavagens informado na etapa Água.
+                        </p>
+                    </fieldset>
+
+                    <!-- ETAPA 4: ALIMENTOS -->
+                    <fieldset class="etapa" data-etapa="3">
+                        <legend>Alimentos</legend>
+
+                        <div class="controle">
+                            <p class="controle-titulo">
+                                Quanto alimento vai para o lixo por semana?
+                                <small>Conte restos de prato, comida estragada, cascas e talos.</small>
+                            </p>
+                            <div class="opcoes opcoes-cartao">
+                                <label class="opcao">
+                                    <input type="radio" name="kgSemana" value="1">
+                                    <span>
+                                        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 26 H32 L29 32 H11 Z" /></svg>
+                                        Pouco <small>1 kg</small>
+                                    </span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="kgSemana" value="3" checked>
+                                    <span>
+                                        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 18 H32 L29 32 H11 Z" /></svg>
+                                        Meia sacola <small>3 kg</small>
+                                    </span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="kgSemana" value="6">
+                                    <span>
+                                        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 12 H30 L32 34 H8 Z" /><path d="M15 12 C15 6 25 6 25 12" /></svg>
+                                        Uma sacola <small>6 kg</small>
+                                    </span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="kgSemana" value="10">
+                                    <span>
+                                        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 14 H20 L21 34 H3 Z" /><path d="M20 14 H36 L37 34 H19 Z" /></svg>
+                                        Duas sacolas <small>10 kg</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <p class="controle-titulo">A casa separa o lixo reciclável para a coleta seletiva?</p>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="separaReciclavel" value="sim" checked>
+                                    <span>Sim</span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="separaReciclavel" value="nao">
+                                    <span>Não</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="controle">
+                            <p class="controle-titulo">As compras de comida são planejadas (lista, cardápio da semana)?</p>
+                            <div class="opcoes opcoes-3">
+                                <label class="opcao">
+                                    <input type="radio" name="planejaCompras" value="sim">
+                                    <span>Sempre</span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="planejaCompras" value="asvezes" checked>
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="planejaCompras" value="nao">
+                                    <span>Não</span>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Navegação entre etapas -->
+                    <div class="questionario-rodape">
+                        <button type="button" class="botao botao-contorno" id="botao-voltar" disabled>Voltar</button>
+                        <button type="button" class="botao botao-principal" id="botao-avancar">Próxima etapa</button>
+                        <button type="submit" class="botao botao-principal" id="botao-laudo" hidden>Ver resultado</button>
+                    </div>
+                </form>
+
+                <!-- Lado direito: monitor ao vivo com os três instrumentos -->
+                <aside class="monitor" aria-label="Monitor ao vivo">
+                    <p class="monitor-titulo">Estimativa parcial</p>
+
+                    <!-- Tanque de água -->
+                    <div class="medidor">
+                        <svg class="medidor-svg" viewBox="0 0 120 160" aria-hidden="true">
+                            <defs>
+                                <clipPath id="corte-tanque">
+                                    <rect x="20" y="10" width="80" height="130" rx="10" />
+                                </clipPath>
+                            </defs>
+                            <g clip-path="url(#corte-tanque)">
+                                <!-- O JavaScript sobe e desce este grupo -->
+                                <g id="nivel-agua" class="nivel-agua">
+                                    <path class="onda" d="M-40 140 Q-30 133 -20 140 T0 140 T20 140 T40 140 T60 140 T80 140 T100 140 T120 140 T140 140 T160 140 V300 H-40 Z" />
+                                </g>
+                            </g>
+                            <rect x="20" y="10" width="80" height="130" rx="10" class="vidro" />
+                            <!-- Linha da média: fica na metade do tanque -->
+                            <line x1="14" y1="75" x2="106" y2="75" class="linha-media" />
+                            <text x="108" y="72" class="rotulo-media" text-anchor="end">média</text>
+                        </svg>
+                        <div class="medidor-leitura">
+                            <p class="medidor-nome cor-agua">Água</p>
+                            <p class="medidor-valor"><span id="leitura-agua">0</span> <small>L/pessoa/dia</small></p>
+                            <p class="medidor-ref">média BR: 180 L</p>
+                        </div>
+                    </div>
+
+                    <!-- Mostrador de energia -->
+                    <div class="medidor">
+                        <svg class="medidor-svg" viewBox="0 0 160 110" aria-hidden="true">
+                            <path d="M20 95 A60 60 0 1 1 140 95" class="mostrador-arco" />
+                            <path d="M20 95 A60 60 0 0 1 38 52" class="mostrador-faixa faixa-ok" />
+                            <path d="M122 52 A60 60 0 0 1 140 95" class="mostrador-faixa faixa-alerta" />
+                            <line x1="80" y1="28" x2="80" y2="38" class="linha-media-solida" />
+                            <!-- O JavaScript gira este ponteiro -->
+                            <line id="ponteiro-energia" class="ponteiro" x1="80" y1="95" x2="80" y2="45" />
+                            <circle cx="80" cy="95" r="6" class="eixo" />
+                        </svg>
+                        <div class="medidor-leitura">
+                            <p class="medidor-nome cor-energia">Energia</p>
+                            <p class="medidor-valor"><span id="leitura-energia">0</span> <small>kWh/mês</small></p>
+                            <p class="medidor-ref">média Sul: 216,8 kWh</p>
+                        </div>
+                    </div>
+
+                    <!-- Balança de alimentos -->
+                    <div class="medidor">
+                        <svg class="medidor-svg" viewBox="0 0 160 110" aria-hidden="true">
+                            <line x1="80" y1="100" x2="80" y2="40" class="balanca-haste" />
+                            <rect x="55" y="98" width="50" height="7" rx="3" class="balanca-base" />
+                            <!-- O JavaScript inclina este braço e move os pratos -->
+                            <line id="braco-balanca" x1="30" y1="40" x2="130" y2="40" class="balanca-braco" />
+                            <g id="prato-voce" class="prato">
+                                <line x1="0" y1="0" x2="-10" y2="22" class="balanca-fio" />
+                                <line x1="0" y1="0" x2="10" y2="22" class="balanca-fio" />
+                                <path d="M-18 22 H18 L11 30 H-11 Z" class="balanca-prato prato-voce" />
+                                <text x="0" y="42" class="rotulo-svg-pequeno" text-anchor="middle">você</text>
+                            </g>
+                            <g id="prato-media" class="prato">
+                                <line x1="0" y1="0" x2="-10" y2="22" class="balanca-fio" />
+                                <line x1="0" y1="0" x2="10" y2="22" class="balanca-fio" />
+                                <path d="M-18 22 H18 L11 30 H-11 Z" class="balanca-prato" />
+                                <text x="0" y="42" class="rotulo-svg-pequeno" text-anchor="middle">média</text>
+                            </g>
+                            <circle cx="80" cy="40" r="5" class="eixo" />
+                        </svg>
+                        <div class="medidor-leitura">
+                            <p class="medidor-nome cor-alimento">Alimentos</p>
+                            <p class="medidor-valor"><span id="leitura-alimento">0</span> <small>kg/pessoa/mês</small></p>
+                            <p class="medidor-ref">média BR: 7,8 kg</p>
+                        </div>
+                    </div>
+                </aside>
             </div>
 
-            <!-- Área reservada para mostrar os resultados -->
-            <div id="resultado-estimativa" aria-live="polite"></div>
+            <!-- O resultado aparece aqui depois de "Ver resultado" -->
+            <div id="laudo" class="laudo" aria-live="polite" hidden></div>
         </section>
 
-        <!-- Área destinada às recomendações de iniciativas e ONGs -->
-        <section class="secao-iniciativas" id="iniciativas">
+        <!-- =====================================================
+             5. INICIATIVAS EM FOZ DO IGUAÇU
+             ===================================================== -->
+        <section class="secao" id="iniciativas">
             <div class="titulo-secao">
-                <p class="etiqueta">JUNTOS FAZEMOS A DIFERENÇA</p>
-                <h2>Conheça iniciativas sustentáveis</h2>
+                <h2>Iniciativas em Foz do Iguaçu</h2>
                 <p>
-                    Futuramente, você encontrará aqui organizações e
-                    projetos relacionados aos temas identificados na
-                    sua estimativa.
+                    Programas e organizações reais ligados a cada tema.
+                    Depois da estimativa, as iniciativas do seu ponto de atenção ficam em destaque.
                 </p>
             </div>
 
-            <!-- As recomendações serão inseridas futuramente -->
-            <div id="lista-iniciativas">
-                <p>
-                    As iniciativas recomendadas aparecerão aqui
-                    quando essa funcionalidade for implementada.
-                </p>
+            <div class="filtros" role="group" aria-label="Filtrar iniciativas por tema">
+                <button type="button" class="filtro ativo" data-tema="todas">Todas</button>
+                <button type="button" class="filtro" data-tema="agua">Água</button>
+                <button type="button" class="filtro" data-tema="energia">Energia</button>
+                <button type="button" class="filtro" data-tema="alimentos">Alimentos</button>
+                <button type="button" class="filtro" data-tema="residuos">Resíduos</button>
             </div>
+
+            <!-- Os cartões são criados pelo JavaScript -->
+            <div id="lista-iniciativas" class="lista-iniciativas"></div>
+
+            <p class="nota-rodape">
+                Informações coletadas em notícias e documentos públicos. Programas
+                podem mudar: confirme datas e regras com cada organização.
+            </p>
         </section>
 
-        <!-- Área para registrar ações sustentáveis -->
-        <section class="secao-acoes" id="acoes">
+        <!-- =====================================================
+             6. AÇÕES SUSTENTÁVEIS + PAINEL DE IMPACTO
+             ===================================================== -->
+        <section class="secao secao-acoes" id="acoes">
             <div class="titulo-secao">
-                <p class="etiqueta">ATITUDE QUE TRANSFORMA</p>
                 <h2>Registre uma ação sustentável</h2>
                 <p>
-                    Registre iniciativas realizadas por moradores
-                    para reduzir desperdícios e melhorar a comunidade.
+                    Anote o que você ou a comunidade fez para reduzir desperdício.
+                    O painel soma o impacto de todos os registros.
                 </p>
             </div>
 
-            <!-- O formulário será criado em uma próxima etapa -->
-            <div id="formulario-acoes">
-                <p>
-                    O formulário de cadastro será desenvolvido
-                    na próxima etapa.
-                </p>
+            <div class="acoes-grade">
+                <form id="formulario-acao" class="formulario-acao" novalidate>
+                    <h3>Novo registro</h3>
+
+                    <div class="campo">
+                        <label for="descricaoAcao">O que foi feito?</label>
+                        <input type="text" id="descricaoAcao" name="descricaoAcao" maxlength="120"
+                               placeholder="Ex.: troquei 5 lâmpadas por LED" required>
+                    </div>
+
+                    <div class="campo-duplo">
+                        <div class="campo">
+                            <label for="categoriaAcao">Tema</label>
+                            <select id="categoriaAcao" name="categoriaAcao" required>
+                                <option value="">Selecione</option>
+                                <option value="Água">Água</option>
+                                <option value="Energia">Energia</option>
+                                <option value="Alimentos">Alimentos</option>
+                                <option value="Resíduos">Resíduos</option>
+                                <option value="Comunidade">Comunidade</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="localAcao">Local</label>
+                            <input type="text" id="localAcao" name="localAcao" maxlength="60"
+                                   placeholder="Ex.: Vila A" required>
+                        </div>
+                    </div>
+
+                    <div class="campo-duplo">
+                        <div class="campo">
+                            <label for="participantesAcao">Participantes</label>
+                            <input type="number" id="participantesAcao" name="participantesAcao" min="1" step="1" value="1" required>
+                        </div>
+                        <div class="campo">
+                            <label for="reducaoAcao">Redução por mês</label>
+                            <div class="campo-com-unidade">
+                                <input type="number" id="reducaoAcao" name="reducaoAcao" min="0" step="any" placeholder="0" required>
+                                <select id="unidadeAcao" name="unidadeAcao" aria-label="Unidade da redução">
+                                    <option value="L">L</option>
+                                    <option value="kWh">kWh</option>
+                                    <option value="kg">kg</option>
+                                    <option value="R$">R$</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="mensagem-acao" class="mensagem" aria-live="polite"></p>
+
+                    <div class="formulario-botoes">
+                        <button type="submit" class="botao botao-principal">Salvar registro</button>
+                        <button type="button" class="botao botao-texto" id="botao-exemplos">Carregar exemplos</button>
+                    </div>
+                </form>
+
+                <!-- Painel de impacto: preenchido pelo JavaScript -->
+                <div class="painel-impacto" aria-live="polite">
+                    <p class="monitor-titulo">Impacto registrado</p>
+
+                    <div class="indicadores">
+                        <div class="indicador">
+                            <p class="indicador-valor" id="total-acoes">0</p>
+                            <p class="indicador-nome">ações registradas</p>
+                        </div>
+                        <div class="indicador">
+                            <p class="indicador-valor" id="total-participantes">0</p>
+                            <p class="indicador-nome">participantes</p>
+                        </div>
+                    </div>
+
+                    <p class="painel-subtitulo">Redução somada por mês</p>
+                    <div class="reducoes" id="reducoes"></div>
+
+                    <p class="painel-subtitulo">Ações por tema</p>
+                    <div class="grafico-temas" id="grafico-temas"></div>
+                </div>
             </div>
 
-            <!-- Os registros salvos serão exibidos nesta área -->
-            <div id="lista-acoes" aria-live="polite"></div>
+            <!-- Lista de registros salvos -->
+            <div id="lista-acoes" class="lista-acoes"></div>
         </section>
 
-        <!-- Explicação sobre o propósito do site -->
-        <section class="secao-sobre" id="sobre">
-            <div class="sobre-conteudo">
-                <p class="etiqueta">NOSSO PROPÓSITO</p>
+        <!-- =====================================================
+             7. SOBRE O PROJETO + FONTES
+             ===================================================== -->
+        <section class="secao secao-sobre" id="sobre">
+            <div class="titulo-secao">
                 <h2>O futuro começa nas nossas escolhas</h2>
+            </div>
 
-                <p>
-                    O refloreser é um projeto que busca incentivar
-                    hábitos de consumo responsáveis, aproximar moradores
-                    de iniciativas sustentáveis e valorizar as ações
-                    que fazem a diferença nas comunidades.
+            <div class="sobre-grade">
+                <p class="sobre-texto">
+                    O refloreser incentiva hábitos de consumo responsáveis,
+                    aproxima moradores de iniciativas sustentáveis e valoriza
+                    as ações que fazem diferença nas comunidades.
                 </p>
 
-                <p>
-                    Nosso projeto está relacionado ao ODS 12, que trata
-                    do consumo e da produção responsáveis, e ao ODS 17,
-                    que incentiva parcerias para alcançar objetivos
-                    de desenvolvimento sustentável.
+                <article class="ods ods-12">
+                    <p class="ods-numero">12</p>
+                    <div>
+                        <h3>Consumo e produção responsáveis</h3>
+                        <p>
+                            A meta 12.3 da ONU pede reduzir pela metade o desperdício
+                            de alimentos por pessoa no varejo e no consumidor até 2030.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="ods ods-17">
+                    <p class="ods-numero">17</p>
+                    <div>
+                        <h3>Parcerias e meios de implementação</h3>
+                        <p>
+                            Liga pessoas a cooperativas, bancos de alimentos e programas
+                            públicos que já atuam na cidade.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Tabela com todas as referências usadas nos cálculos -->
+            <div class="fontes" id="fontes">
+                <h3>Fontes e valores de referência</h3>
+                <p class="dica">
+                    O resultado é uma estimativa. Para saber o consumo real,
+                    compare com as contas de água (Sanepar) e de luz (Copel).
                 </p>
+                <div class="tabela-rolagem">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Parâmetro</th>
+                                <th scope="col">Valor usado</th>
+                                <th scope="col">Fonte</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Consumo médio de água no Brasil</td>
+                                <td>180 L/pessoa/dia</td>
+                                <td><a href="https://www.dgabc.com.br/Noticia/4293136/consumo-de-agua-na-regiao-supera-recomendacao-da-oms-e-chega-a-177-litros" target="_blank" rel="noopener">Sinisa, Ministério das Cidades (via Diário do Grande ABC)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Consumo recomendado pela ONU</td>
+                                <td>110 L/pessoa/dia</td>
+                                <td><a href="https://idec.org.br/node/19785" target="_blank" rel="noopener">Idec</a></td>
+                            </tr>
+                            <tr>
+                                <td>Vazão de chuveiro elétrico / a gás</td>
+                                <td>4 L/min / 9 L/min</td>
+                                <td><a href="https://idec.org.br/print/24493" target="_blank" rel="noopener">Estudo da USP, divulgado pelo Idec</a></td>
+                            </tr>
+                            <tr>
+                                <td>Escovar os dentes com torneira aberta</td>
+                                <td>12 L (fechada: 0,5 L)</td>
+                                <td><a href="https://www.sindiconet.com.br/informese/16-dicas-para-economizar-agua-em-casa-para-moradores-vida-em-condominio" target="_blank" rel="noopener">Dados da Sabesp (via SíndicoNet)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Torneira aberta (pia)</td>
+                                <td>9 L/min (faixa de 6 a 15)</td>
+                                <td><a href="https://www.infomoney.com.br/?p=2745393" target="_blank" rel="noopener">Iguá Saneamento (via InfoMoney)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Descarga</td>
+                                <td>6,8 L (antiga: 12 L); 5 vezes/pessoa/dia</td>
+                                <td><a href="https://tratamentodeagua.com.br/wp-content/uploads/2019/01/9478.pdf" target="_blank" rel="noopener">Bacias vendidas no Brasil desde 2001</a>; <a href="https://ojsrevista.furb.br/ojs/index.php/rea/article/download/7793/4574/31570" target="_blank" rel="noopener">Tomaz (2009), via Revista REA/FURB</a></td>
+                            </tr>
+                            <tr>
+                                <td>Máquina de lavar roupa</td>
+                                <td>135 L e 0,31 kWh por lavagem</td>
+                                <td><a href="https://www.cut.org.br/noticias/veja-como-economizar-agua-para-nao-pagar-um-conta-astronomica-2066" target="_blank" rel="noopener">Sabesp (via CUT)</a>; <a href="https://idec.org.br/node/7799" target="_blank" rel="noopener">Eletrobras (via Idec)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Consumo médio de energia por casa</td>
+                                <td>216,8 kWh/mês (Sul); 177 kWh/mês (Brasil)</td>
+                                <td><a href="https://conceg.com.br/anuario-traz-raio-x-do-consumo-medio-de-energia-eletrica-nas-cinco-regioes-do-pais/" target="_blank" rel="noopener">Anuário Estatístico de Energia Elétrica 2026, EPE</a>; <a href="https://calculakwh.com.br/artigos/consumo-medio-de-energia-residencial/" target="_blank" rel="noopener">cálculo a partir do Anuário</a></td>
+                            </tr>
+                            <tr>
+                                <td>Chuveiro elétrico (energia)</td>
+                                <td>potência × tempo; chave verão: 30% menos</td>
+                                <td><a href="https://www.gazetasp.com.br/cotidiano/chuveiro-eletrico-de-7-500-w-promete-banho-mais-quente-no-inverno-mas-o-consumo-de-15-minutos-pode-surpreender-e-elevar-a-conta-de-luz-de-uma-familia-de-quatro-pessoas/" target="_blank" rel="noopener">Gazeta SP</a>; <a href="https://www.parana.pr.gov.br/aen/Noticia/Dias-mais-quentes-requerem-atencao-ao-consumo-de-energia-dos-eletrodomesticos" target="_blank" rel="noopener">Copel (AEN-PR)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Geladeira</td>
+                                <td>28 kWh/mês (0,83 a 1,05 kWh/dia)</td>
+                                <td><a href="https://olhardigital.com.br/curiosidades/?p=19980" target="_blank" rel="noopener">Cartilha da ANEEL (via Olhar Digital)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Ar-condicionado até 9.000 BTU/h</td>
+                                <td>128,8 kWh/mês com 8 h/dia</td>
+                                <td><a href="https://concursosnobrasil.com/artigo/7-eletrodomesticos-que-consomem-muita-energia-veja-quais-sao/" target="_blank" rel="noopener">Procel (via Concursos no Brasil)</a></td>
+                            </tr>
+                            <tr>
+                                <td>TV LED 42"</td>
+                                <td>30,45 kWh/mês com 5 h/dia</td>
+                                <td><a href="https://concursosnobrasil.com/10-aparelhos-e-eletrodomesticos-que-consomem-muita-energia-veja-quais-sao/" target="_blank" rel="noopener">Concursos no Brasil</a></td>
+                            </tr>
+                            <tr>
+                                <td>Ferro elétrico a vapor</td>
+                                <td>7,2 kWh/mês com 12 h/mês</td>
+                                <td><a href="https://idec.org.br/print/24463" target="_blank" rel="noopener">Eletrobras (via Idec)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Lâmpadas</td>
+                                <td>LED 9 W, fluorescente 15 W, incandescente 60 W</td>
+                                <td>Potências típicas de embalagem</td>
+                            </tr>
+                            <tr>
+                                <td>Desperdício doméstico de alimentos</td>
+                                <td>94 kg/pessoa/ano</td>
+                                <td><a href="https://embrapa.br/busca-de-noticias/-/noticia/87972089/world-squanders-over-1-billion-meals-a-day-according-to-un" target="_blank" rel="noopener">Food Waste Index Report 2024, PNUMA (via Embrapa)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Peso das opções de desperdício (pote, sacola)</td>
+                                <td>1 / 3 / 6 / 10 kg por semana</td>
+                                <td>Aproximação definida pelo projeto</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Rodapé da página -->
+    <!-- =====================================================
+         RODAPÉ
+         ===================================================== -->
     <footer class="rodape">
-        <a class="marca marca-rodape" href="#inicio">
-            <span aria-hidden="true">🌱</span>
+        <a class="marca" href="#inicio">
+            <svg class="marca-simbolo" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29 V15" /><path d="M16 19 C9 18 5 13 6 6 C13 7 17 12 16 19 Z" /><path d="M16 15 C21 14 26 10 26 3 C20 4 16 9 16 15 Z" /></svg>
             <span class="marca-nome">refloreser</span>
         </a>
-
-        <p>
-            Pequenas ações podem inspirar grandes mudanças.
-        </p>
-
+        <p>Pequenas ações podem inspirar grandes mudanças.</p>
         <p class="rodape-creditos">
-            Projeto estudantil de sustentabilidade.
+            Projeto estudantil de sustentabilidade · Alunos do 3º A
+            <br>
+            Esthefany Taynara · Kauan Zardo · Rosa Maria
         </p>
     </footer>
-    <script src="script.js" defer></script>
+
 </body>
 </html>

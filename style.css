@@ -1,740 +1,1861 @@
-/* =========================================
-   1. CONFIGURAÇÕES GERAIS DO SITE
-   ========================================= */
+/* =====================================================
+   REFLORESER - ESTILOS
+   Visual claro e sóbrio, com as cores do projeto original
+   -----------------------------------------------------
+   1. Variáveis e configurações gerais
+   2. Cabeçalho
+   3. Botões e etiquetas
+   4. Início (hero) e ilustração
+   5. Seções, protocolo e fichas
+   6. Questionário e monitor
+   7. Laudo
+   8. Iniciativas
+   9. Ações e painel de impacto
+   10. Sobre e fontes
+   11. Rodapé
+   12. Animações
+   13. Telas menores
+   ===================================================== */
 
-/* Remove margens inesperadas e facilita o controle dos tamanhos */
+
+/* =====================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Define as cores e os estilos principais do projeto */
 :root {
-    --verde-escuro: #234b36;
-    --verde-principal: #387650;
-    --verde-claro: #e7f0e5;
-    --verde-suave: #f2f6ed;
-    --creme: #faf8f0;
-    --branco: #ffffff;
+    /* Cores claras do projeto original */
+    --fundo: #faf8f0;            /* creme */
+    --painel: #ffffff;
+    --painel-claro: #f2f6ed;     /* verde suave */
+    --borda: #dce5d9;
+    --grade: rgba(56, 118, 80, 0.06);
+
+    /* Textos */
     --texto: #26382d;
     --texto-suave: #647267;
-    --borda: #dce5d9;
-    --sombra: 0 10px 30px rgba(35, 75, 54, 0.08);
+
+    /* Verdes da marca */
+    --verde-principal: #387650;
+    --verde-escuro: #234b36;
+    --verde-claro: #e7f0e5;
+
+    /* Uma cor para cada recurso */
+    --agua: #1f86b5;
+    --energia: #c98a00;
+    --alimento: #d4562f;
+
+    /* Papel do laudo */
+    --papel: #ffffff;
+    --tinta: #1d2a24;
+    --agua-tinta: #0b6f96;
+    --energia-tinta: #9a6a00;
+    --alimento-tinta: #c2441f;
+
+    /* Fontes */
+    --fonte-titulo: "IBM Plex Sans", Arial, sans-serif;
+    --fonte-texto: "IBM Plex Sans", Arial, sans-serif;
+    --fonte-mono: "IBM Plex Sans", Arial, sans-serif;
+
+    --raio: 14px;
 }
 
-/* Define a rolagem suave ao clicar nos links do menu */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+    scroll-padding-top: 90px;
 }
 
-/* Configura a aparência geral da página */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--creme);
+    font-family: var(--fonte-texto);
     color: var(--texto);
-    line-height: 1.7;
+    background-color: var(--fundo);
+    /* Números com largura igual: ficam alinhados em tabelas e indicadores */
+    font-variant-numeric: tabular-nums;
+    line-height: 1.6;
     font-size: 16px;
 }
 
-/* Faz imagens respeitarem o espaço disponível */
-img {
+/* Garante que elementos com o atributo hidden fiquem escondidos */
+[hidden] {
+    display: none !important;
+}
+
+img,
+svg {
     display: block;
     max-width: 100%;
 }
 
-/* Remove o sublinhado padrão dos links */
 a {
     color: inherit;
-    text-decoration: none;
 }
 
-/* Mantém os botões com a mesma fonte do restante do site */
 button,
 input,
-select,
-textarea {
+select {
     font: inherit;
 }
 
-/* Destaca os elementos quando recebem foco pelo teclado */
+/* Contorno visível para quem navega pelo teclado */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid #9abf83;
-    outline-offset: 4px;
+select:focus-visible {
+    outline: 2px solid var(--verde-principal);
+    outline-offset: 3px;
 }
 
-/* =========================================
-   2. CABEÇALHO E NAVEGAÇÃO
-   ========================================= */
+/* Cores de texto por recurso */
+.cor-agua { color: var(--agua); }
+.cor-energia { color: var(--energia); }
+.cor-alimento { color: var(--alimento); }
 
-/* Organiza a logo e o menu na mesma linha */
+
+/* =====================================================
+   2. CABEÇALHO
+   ===================================================== */
+
 .cabecalho {
-    width: 100%;
-    min-height: 86px;
-    padding: 18px 7%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    background-color: var(--creme);
+    padding: 16px 6%;
+    background-color: rgba(250, 248, 240, 0.92);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--borda);
 }
 
-/* Organiza o símbolo e o nome da marca */
 .marca {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-/* Estiliza o símbolo provisório da logo */
-.marca-simbolo {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    background-color: var(--verde-claro);
-    border-radius: 14px;
-    font-size: 25px;
-}
-
-/* Estiliza o nome refloreser */
-.marca-nome {
-    color: var(--verde-escuro);
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-/* Organiza os links do menu */
-.navegacao {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 24px;
+    gap: 8px;
+    text-decoration: none;
 }
 
-/* Define a aparência dos links de navegação */
+.marca-simbolo {
+    width: 28px;
+    height: 28px;
+    fill: var(--verde-principal);
+    stroke: var(--verde-principal);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.marca-nome {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.navegacao {
+    display: flex;
+    gap: 26px;
+}
+
 .navegacao a {
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
     color: var(--texto-suave);
-    font-size: 14px;
-    font-weight: 600;
-    transition: color 0.2s ease;
+    text-decoration: none;
 }
 
-/* Muda a cor do link quando o visitante passa o mouse */
 .navegacao a:hover {
     color: var(--verde-principal);
 }
 
-/* =========================================
-   3. ÁREA INICIAL DO SITE
-   ========================================= */
-
-/* Divide a apresentação em texto e ilustração */
-.inicio {
-    min-height: 540px;
-    padding: 80px 9%;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+.status-painel {
+    display: flex;
     align-items: center;
-    gap: 55px;
-    overflow: hidden;
-    background:
-        radial-gradient(
-            circle at 90% 20%,
-            #e3eddc 0,
-            transparent 40%
-        ),
-        var(--creme);
-}
-
-/* Evita que o texto ultrapasse sua coluna */
-.inicio-conteudo {
-    max-width: 610px;
-}
-
-/* Pequeno texto usado acima dos títulos */
-.etiqueta {
-    margin-bottom: 15px;
-    color: var(--verde-principal);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-/* Título principal da página */
-.inicio h1 {
-    margin-bottom: 22px;
-    color: var(--verde-escuro);
-    font-size: clamp(38px, 5vw, 64px);
-    line-height: 1.12;
-    letter-spacing: -2px;
-}
-
-/* Coloca a segunda parte do título em outra linha */
-.inicio h1 span {
-    display: block;
+    gap: 8px;
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
     color: var(--verde-principal);
 }
 
-/* Texto descritivo da apresentação */
-.inicio-descricao {
-    max-width: 520px;
-    margin-bottom: 28px;
-    color: var(--texto-suave);
-    font-size: 17px;
-}
-
-/* Botão principal de chamada para ação */
-.botao-principal {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 25px;
-    border: 2px solid var(--verde-principal);
-    border-radius: 12px;
+/* "Luz" que pisca */
+.led {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     background-color: var(--verde-principal);
-    color: var(--branco);
-    font-weight: 700;
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    box-shadow: 0 0 8px var(--verde-principal);
+    animation: piscar 2s infinite;
 }
 
-/* Efeito do botão ao passar o mouse */
-.botao-principal:hover {
-    background-color: var(--verde-escuro);
-    border-color: var(--verde-escuro);
-    box-shadow: var(--sombra);
+
+/* =====================================================
+   3. BOTÕES E ETIQUETAS
+   ===================================================== */
+
+.etiqueta {
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+    color: var(--verde-principal);
+    margin-bottom: 14px;
+}
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.botao:hover {
     transform: translateY(-2px);
 }
 
-/* Texto abaixo do botão */
-.texto-apoio {
-    margin-top: 18px;
-    color: var(--texto-suave);
-    font-size: 13px;
+.botao:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
 }
 
-/* Organiza a área reservada à ilustração */
-.inicio-ilustracao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 0;
+.botao-principal {
+    background-color: var(--verde-principal);
+    color: #ffffff;
 }
 
-/* Estiliza a imagem da casa sustentável */
-.inicio-ilustracao img {
-    width: 100%;
-    max-width: 470px;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    border-radius: 32px;
-}
-
-/* =========================================
-   4. TÍTULOS DAS SEÇÕES
-   ========================================= */
-
-/* Centraliza os títulos das seções */
-.titulo-secao {
-    max-width: 720px;
-    margin: 0 auto 42px;
-    text-align: center;
-}
-
-/* Títulos secundários */
-.titulo-secao h2,
-.sobre-conteudo h2 {
-    margin-bottom: 15px;
-    color: var(--verde-escuro);
-    font-size: clamp(28px, 3.5vw, 40px);
-    line-height: 1.2;
-    letter-spacing: -1px;
-}
-
-/* Descrição abaixo dos títulos */
-.titulo-secao > p:last-child {
-    color: var(--texto-suave);
-}
-
-/* =========================================
-   5. CARTÕES DE ÁGUA, ENERGIA E ALIMENTOS
-   ========================================= */
-
-/* Espaçamento da seção de recursos */
-.secao-recursos {
-    padding: 85px 9%;
-    background-color: var(--branco);
-}
-
-/* Organiza os três cartões */
-.cartoes-recursos {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    max-width: 1150px;
-    margin: 0 auto;
-}
-
-/* Aparência individual dos cartões */
-.cartao-recurso {
-    padding: 30px 25px;
-    border: 1px solid var(--borda);
-    border-radius: 20px;
-    background-color: var(--creme);
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-/* Eleva levemente o cartão ao passar o mouse */
-.cartao-recurso:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--sombra);
-}
-
-/* Caixa do ícone de cada cartão */
-.icone-recurso {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 20px;
-    display: grid;
-    place-items: center;
-    border-radius: 17px;
-    background-color: var(--verde-claro);
-    font-size: 27px;
-}
-
-/* Título dos cartões */
-.cartao-recurso h3 {
-    margin-bottom: 10px;
-    color: var(--verde-escuro);
-    font-size: 20px;
-}
-
-/* Descrição dos cartões */
-.cartao-recurso p {
-    color: var(--texto-suave);
-    font-size: 14px;
-}
-
-/* =========================================
-   6. SEÇÃO DE ESTIMATIVAS
-   ========================================= */
-
-/* Fundo suave para diferenciar a seção */
-.secao-estimativa {
-    padding: 85px 9%;
-    background-color: var(--verde-suave);
-}
-
-/* Aparência da área do questionário */
-#area-questionario {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px;
-    border: 1px solid var(--borda);
-    border-radius: 20px;
-    background-color: var(--branco);
-    box-shadow: var(--sombra);
-}
-
-/* Texto da área do questionário */
-#area-questionario p {
-    color: var(--texto-suave);
-    text-align: center;
-}
-
-/* Espaço para os resultados calculados */
-#resultado-estimativa {
-    max-width: 800px;
-    margin: 25px auto 0;
-}
-
-/* =========================================
-   7. SEÇÃO DE INICIATIVAS E ONGS
-   ========================================= */
-
-/* Espaçamento da seção de iniciativas */
-.secao-iniciativas {
-    padding: 85px 9%;
-    background-color: var(--branco);
-}
-
-/* Área que futuramente receberá os cartões de iniciativas */
-#lista-iniciativas {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* Estiliza o texto inicial enquanto não existem recomendações */
-#lista-iniciativas > p {
-    grid-column: 1 / -1;
-    padding: 28px;
-    border: 1px dashed var(--borda);
-    border-radius: 16px;
-    color: var(--texto-suave);
-    text-align: center;
-}
-
-/* =========================================
-   8. SEÇÃO DE CADASTRO DE AÇÕES
-   ========================================= */
-
-/* Fundo verde muito claro para destacar os registros */
-.secao-acoes {
-    padding: 85px 9%;
-    background-color: var(--verde-suave);
-}
-
-/* Área do formulário de ações */
-#formulario-acoes {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px;
-    border: 1px solid var(--borda);
-    border-radius: 20px;
-    background-color: var(--branco);
-    box-shadow: var(--sombra);
-}
-
-/* Texto que aparece antes de o formulário ser criado */
-#formulario-acoes > p {
-    color: var(--texto-suave);
-    text-align: center;
-}
-
-/* Espaço para a lista de ações cadastradas */
-#lista-acoes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 30px auto 0;
-}
-
-/* =========================================
-   9. SEÇÃO SOBRE O PROJETO
-   ========================================= */
-
-/* Centraliza o conteúdo e limita sua largura */
-.secao-sobre {
-    padding: 90px 9%;
-    background-color: var(--branco);
-}
-
-/* Área de texto sobre o refloreser */
-.sobre-conteudo {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Espaçamento dos parágrafos */
-.sobre-conteudo p:not(.etiqueta) {
-    margin-top: 18px;
-    color: var(--texto-suave);
-}
-
-/* =========================================
-   10. RODAPÉ
-   ========================================= */
-
-/* Organiza as informações finais da página */
-.rodape {
-    padding: 40px 9%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    background-color: var(--verde-escuro);
-    color: var(--branco);
-    text-align: center;
-}
-
-/* Ajusta a marca para aparecer no fundo escuro */
-.marca-rodape .marca-nome {
-    color: var(--branco);
-}
-
-/* Símbolo da marca no rodapé */
-.marca-rodape > span:first-child {
-    font-size: 27px;
-}
-
-/* Textos menores do rodapé */
-.rodape > p {
-    color: #e0e9df;
-    font-size: 14px;
-}
-
-.rodape .rodape-creditos {
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-/* =========================================
-   11. ADAPTAÇÃO PARA TABLETS
-   ========================================= */
-
-/* Aplica estes estilos quando a tela tem até 950 pixels */
-@media (max-width: 950px) {
-    .cabecalho {
-        padding-right: 5%;
-        padding-left: 5%;
-        flex-wrap: wrap;
-    }
-
-    .navegacao {
-        gap: 15px;
-    }
-
-    .inicio {
-        padding: 65px 6%;
-        gap: 30px;
-    }
-
-    .secao-recursos,
-    .secao-estimativa,
-    .secao-iniciativas,
-    .secao-acoes,
-    .secao-sobre {
-        padding-right: 6%;
-        padding-left: 6%;
-    }
-
-    .cartoes-recursos {
-        gap: 16px;
-    }
-
-    .cartao-recurso {
-        padding: 23px 18px;
-    }
-}
-
-/* =========================================
-   12. ADAPTAÇÃO PARA CELULARES
-   ========================================= */
-
-/* Aplica estes estilos quando a tela tem até 650 pixels */
-@media (max-width: 650px) {
-    /* Coloca a marca acima do menu */
-    .cabecalho {
-        padding: 18px 5%;
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .marca-nome {
-        font-size: 23px;
-    }
-
-    /* Permite que os links ocupem várias linhas */
-    .navegacao {
-        width: 100%;
-        justify-content: center;
-        gap: 10px 18px;
-    }
-
-    .navegacao a {
-        font-size: 13px;
-    }
-
-    /* Coloca o texto e a imagem um abaixo do outro */
-    .inicio {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 55px 7%;
-        gap: 35px;
-    }
-
-    .inicio h1 {
-        font-size: 43px;
-        letter-spacing: -1.5px;
-    }
-
-    .inicio-descricao {
-        font-size: 15px;
-    }
-
-    .inicio-ilustracao img {
-        max-width: 360px;
-    }
-
-    /* Reduz os espaços das seções */
-    .secao-recursos,
-    .secao-estimativa,
-    .secao-iniciativas,
-    .secao-acoes,
-    .secao-sobre {
-        padding: 60px 7%;
-    }
-
-    /* Empilha os cartões de recursos */
-    .cartoes-recursos {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .cartao-recurso {
-        padding: 25px;
-    }
-
-    /* Ajusta os títulos para telas menores */
-    .titulo-secao h2,
-    .sobre-conteudo h2 {
-        font-size: 30px;
-    }
-
-    /* Reduz o espaço interno das áreas de formulário */
-    #area-questionario,
-    #formulario-acoes {
-        padding: 22px 18px;
-    }
-
-    /* Mostra iniciativas e ações em uma única coluna */
-    #lista-iniciativas,
-    #lista-acoes {
-        grid-template-columns: 1fr;
-    }
-
-    .rodape {
-        padding: 35px 7%;
-    }
-}
-
-/* =========================================
-   13. RESPEITO À PREFERÊNCIA DE MOVIMENTO
-   ========================================= */
-
-/* Desativa animações suaves para quem prefere menos movimento */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-    }
-}
-
-/* =========================================
-   14. CAMPOS CRIADOS PELO JAVASCRIPT
-   ========================================= */
-
-/* Organiza os campos dos formulários */
-#questionario-consumo,
-#formulario-nova-acao {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-/* Estiliza os títulos dos formulários */
-#questionario-consumo h3,
-#formulario-nova-acao h3 {
-    color: var(--verde-escuro);
-    font-size: 23px;
-    line-height: 1.3;
-}
-
-/* Estiliza os textos explicativos dos formulários */
-#questionario-consumo > p,
-#formulario-nova-acao > p {
-    color: var(--texto-suave);
-    font-size: 14px;
-}
-
-/* Organiza cada rótulo junto de seu campo */
-.campo-formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-/* Estiliza os nomes dos campos */
-.campo-formulario label {
-    color: var(--verde-escuro);
-    font-size: 14px;
-    font-weight: 700;
-}
-
-/* Estiliza caixas de texto, números e listas */
-.campo-formulario input,
-.campo-formulario select {
-    width: 100%;
-    min-height: 48px;
-    padding: 11px 13px;
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    background-color: var(--branco);
+.botao-contorno {
+    background-color: transparent;
+    border-color: var(--borda);
     color: var(--texto);
 }
 
-/* Destaca os campos quando são selecionados */
-.campo-formulario input:focus,
-.campo-formulario select:focus {
+.botao-contorno:hover {
     border-color: var(--verde-principal);
-    outline: 2px solid var(--verde-claro);
 }
 
-/* Evita que os botões fiquem excessivamente largos */
-#questionario-consumo .botao-principal,
-#formulario-nova-acao .botao-principal,
-#lista-acoes .botao-principal {
-    align-self: flex-start;
-    cursor: pointer;
+.botao-texto {
+    background: none;
+    color: var(--texto-suave);
+    text-decoration: underline;
+    padding-inline: 8px;
 }
 
-/* Organiza o título e o resultado da estimativa */
-#resultado-estimativa {
+
+/* =====================================================
+   4. INÍCIO (HERO) E ILUSTRAÇÃO
+   ===================================================== */
+
+.inicio {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 70px 6% 60px;
+    min-height: 0;
+}
+
+.inicio h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    font-weight: 700;
+    margin-bottom: 26px;
+}
+
+.inicio-descricao {
+    max-width: 560px;
+    font-size: 1.1rem;
+    color: var(--texto-suave);
+    margin-bottom: 32px;
+}
+
+.inicio-botoes {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-/* Estiliza o título dos resultados */
-#resultado-estimativa h3 {
-    color: var(--verde-escuro);
-    font-size: 23px;
+/* Três números em linha, separados por traços */
+.inicio-dados {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--borda);
 }
 
-/* Estiliza os textos dos resultados */
-#resultado-estimativa p {
+.inicio-dados li {
+    padding: 16px 16px 0 0;
+}
+
+.inicio-dados li + li {
+    padding-left: 16px;
+    border-left: 1px solid var(--borda);
+}
+
+.inicio-dados strong {
+    display: block;
+    font-family: var(--fonte-mono);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.inicio-dados span {
+    font-size: 0.82rem;
+    color: var(--texto-suave);
+    line-height: 1.4;
+}
+
+.inicio-ilustracao {
+    padding: 24px;
+    border: 1px solid var(--borda);
+    border-radius: 24px;
+    background: radial-gradient(circle at 60% 40%, rgba(56, 118, 80, 0.08), transparent 70%), var(--painel);
+}
+
+/* Partes da ilustração (SVG) */
+.cano {
+    fill: none;
+    stroke: var(--borda);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fluxo {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.8;
+}
+
+.fluxo-agua { stroke: var(--agua); }
+.fluxo-energia { stroke: var(--energia); }
+.fluxo-alimento { stroke: var(--alimento); }
+
+.casa-telhado { fill: var(--painel-claro); stroke: var(--verde-principal); stroke-width: 3; stroke-linejoin: round; }
+.casa-parede { fill: var(--painel-claro); stroke: var(--texto-suave); stroke-width: 2; }
+.casa-janela { fill: rgba(255, 194, 61, 0.25); stroke: var(--energia); stroke-width: 2; }
+.casa-detalhe { stroke: var(--energia); stroke-width: 2; }
+.casa-porta { fill: var(--fundo); stroke: var(--texto-suave); stroke-width: 2; }
+.broto-caule { stroke: var(--verde-principal); stroke-width: 3; fill: none; }
+.broto-folha { fill: var(--verde-principal); }
+.chao { stroke: var(--borda); stroke-width: 2; }
+
+.vidro {
+    fill: rgba(31, 134, 181, 0.06);
+    stroke: var(--texto-suave);
+    stroke-width: 2;
+}
+
+.onda {
+    fill: var(--agua);
+    opacity: 0.85;
+    animation: ondular 3s linear infinite;
+}
+
+.marca-escala { stroke: var(--texto-suave); stroke-width: 2; }
+
+.mostrador-arco {
+    fill: none;
+    stroke: var(--borda);
+    stroke-width: 12;
+    stroke-linecap: round;
+}
+
+.mostrador-faixa {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+}
+
+.faixa-ok { stroke: var(--verde-principal); }
+.faixa-alerta { stroke: var(--alimento); }
+
+.ponteiro,
+.ponteiro-hero {
+    stroke: var(--energia);
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.ponteiro-hero {
+    transform-origin: 350px 310px;
+    transform: rotate(20deg);
+}
+
+.eixo { fill: var(--texto); }
+
+.balanca-haste { stroke: var(--texto-suave); stroke-width: 4; }
+.balanca-base { fill: var(--texto-suave); }
+.balanca-braco { stroke: var(--texto); stroke-width: 4; stroke-linecap: round; }
+.balanca-fio { stroke: var(--texto-suave); stroke-width: 1.5; }
+.balanca-prato { fill: var(--painel-claro); stroke: var(--texto-suave); stroke-width: 2; }
+.prato-voce { fill: var(--alimento); stroke: var(--alimento); }
+
+.braco-hero {
+    transform-origin: 350px 390px;
+    transform: rotate(-4deg);
+}
+
+.rotulo-svg {
+    font-family: var(--fonte-mono);
+    font-size: 13px;
+    fill: var(--texto-suave);
+}
+
+.rotulo-svg-pequeno {
+    font-family: var(--fonte-mono);
+    font-size: 9px;
+    fill: var(--texto-suave);
+}
+
+/* Faixa que passa na tela como um letreiro */
+.faixa-registro {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 14px 6%;
+    border-block: 1px solid var(--borda);
+    background-color: var(--verde-escuro);
+    color: var(--fundo);
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   5. SEÇÕES, PROTOCOLO E FICHAS
+   ===================================================== */
+
+.secao {
+    padding: 100px 6%;
+}
+
+.titulo-secao {
+    max-width: 720px;
+    margin-bottom: 48px;
+}
+
+.titulo-secao h2 {
+    font-weight: 600;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+}
+
+.titulo-secao > p:not(.etiqueta) {
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+}
+
+/* Protocolo: três passos */
+.protocolo {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    counter-reset: passo;
+}
+
+.passo {
+    position: relative;
+    padding: 30px 26px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    background-color: var(--painel);
+}
+
+.passo-numero {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-family: var(--fonte-mono);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--borda);
+}
+
+.passo-icone {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 18px;
+    fill: none;
+    stroke: var(--verde-principal);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.passo h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.passo p {
     color: var(--texto-suave);
 }
 
-/* Espaço entre as informações de cada cartão de ação */
-#lista-acoes .cartao-recurso p {
-    margin-top: 8px;
-    overflow-wrap: anywhere;
+/* Caixa com exemplo de fórmula */
+.formula {
+    margin-top: 28px;
+    padding: 26px 30px;
+    border: 1px dashed var(--verde-principal);
+    border-radius: var(--raio);
+    background-color: rgba(56, 118, 80, 0.04);
 }
 
-/* Ajusta o botão de exclusão para telas pequenas */
-@media (max-width: 650px) {
-    #questionario-consumo .botao-principal,
-    #formulario-nova-acao .botao-principal,
-    #lista-acoes .botao-principal {
-        width: 100%;
-        align-self: stretch;
+.formula-rotulo {
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+    color: var(--verde-principal);
+    margin-bottom: 8px;
+}
+
+.formula-conta {
+    font-family: var(--fonte-mono);
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+}
+
+.formula-conta .op {
+    color: var(--texto-suave);
+    margin-inline: 6px;
+}
+
+.formula-nota {
+    margin-top: 8px;
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+}
+
+/* Fichas técnicas dos recursos */
+.secao-fichas {
+    padding-top: 20px;
+}
+
+.fichas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.ficha {
+    --cor: var(--verde-principal);
+    padding: 26px;
+    border-radius: var(--raio);
+    border: 1px solid var(--borda);
+    background-color: var(--painel);
+}
+
+.ficha-agua { --cor: var(--agua); }
+.ficha-energia { --cor: var(--energia); }
+.ficha-alimento { --cor: var(--alimento); }
+
+.ficha-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.ficha-codigo {
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+    color: var(--cor);
+}
+
+.ficha-icone {
+    width: 40px;
+    height: 40px;
+    fill: none;
+    stroke: var(--cor);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.ficha h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.ficha-numero {
+    font-family: var(--fonte-mono);
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--cor);
+    line-height: 1.2;
+    margin: 6px 0 12px;
+}
+
+.ficha-numero small {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    font-weight: 400;
+}
+
+.ficha-texto {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+}
+
+.ficha-maior {
+    padding-top: 12px;
+    border-top: 1px dashed var(--borda);
+    font-size: 0.9rem;
+}
+
+
+/* =====================================================
+   6. QUESTIONÁRIO E MONITOR
+   ===================================================== */
+
+.secao-estimativa {
+    background: linear-gradient(180deg, transparent, rgba(56, 118, 80, 0.03), transparent);
+}
+
+.bancada-medicao {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.questionario {
+    box-shadow: 0 10px 30px rgba(35, 75, 54, 0.08);
+    padding: 28px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background-color: var(--painel);
+}
+
+/* Etapas no topo do formulário */
+.etapas {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.etapa-botao {
+    width: 100%;
+    padding: 10px 6px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: none;
+    color: var(--texto-suave);
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.etapa-botao.ativa {
+    border-color: var(--verde-principal);
+    background-color: var(--verde-principal);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.etapa-botao.feita {
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+}
+
+/* Só a etapa ativa aparece */
+.etapa {
+    display: none;
+    border: none;
+}
+
+.etapa.ativa {
+    display: block;
+    animation: surgir 0.35s ease;
+}
+
+.etapa legend {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.controle {
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--borda);
+}
+
+.controle label,
+.controle-titulo {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.controle-titulo small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+.controle-linha {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.controle-linha output {
+    min-width: 116px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background-color: var(--fundo);
+    border: 1px solid var(--borda);
+    font-family: var(--fonte-mono);
+    font-size: 0.9rem;
+    color: var(--verde-principal);
+    text-align: right;
+}
+
+/* Controle deslizante (range) personalizado */
+input[type="range"] {
+    flex: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--borda);
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--verde-principal);
+    border: 4px solid var(--fundo);
+    box-shadow: 0 0 0 1px var(--verde-principal);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--verde-principal);
+    border: 4px solid var(--fundo);
+}
+
+/* Opções em forma de cartão (rádio escondido) */
+.opcoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.opcoes-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.opcoes-cartao {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.opcao {
+    position: relative;
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.opcao input {
+    position: absolute;
+    opacity: 0;
+}
+
+.opcao span {
+    display: block;
+    height: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    font-weight: 500;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.opcao span small {
+    display: block;
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--texto-suave);
+}
+
+.opcao span svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+    fill: none;
+    stroke: var(--alimento);
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+
+.opcao input:checked + span {
+    border-color: var(--verde-principal);
+    background-color: rgba(56, 118, 80, 0.1);
+}
+
+.opcao input:focus-visible + span {
+    outline: 2px solid var(--verde-principal);
+    outline-offset: 2px;
+}
+
+.dica {
+    margin-top: 14px;
+    padding-left: 12px;
+    border-left: 2px solid var(--verde-principal);
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+}
+
+.questionario-rodape {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+/* Monitor ao vivo */
+.monitor {
+    position: sticky;
+    top: 96px;
+    padding: 22px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background-color: var(--painel-claro);
+    box-shadow: inset 0 0 40px rgba(56, 118, 80, 0.05);
+}
+
+.monitor-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+    color: var(--verde-principal);
+    margin-bottom: 14px;
+}
+
+.medidor {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--borda);
+}
+
+.medidor:last-child {
+    border-bottom: none;
+}
+
+.medidor-svg {
+    width: 120px;
+    height: auto;
+}
+
+.medidor-nome {
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+}
+
+.medidor-valor {
+    font-family: var(--fonte-mono);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.medidor-valor small {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--texto-suave);
+}
+
+.medidor-ref {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+/* Partes que o JavaScript movimenta: a transição deixa o movimento suave */
+.nivel-agua,
+.ponteiro,
+.balanca-braco,
+.prato {
+    transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.6, 1);
+}
+
+.ponteiro {
+    transform-box: view-box;
+    transform-origin: 80px 95px;
+}
+
+.balanca-braco {
+    transform-box: view-box;
+    transform-origin: 80px 40px;
+}
+
+.linha-media {
+    stroke: var(--texto);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 3;
+}
+
+.linha-media-solida {
+    stroke: var(--texto);
+    stroke-width: 2;
+}
+
+.rotulo-media {
+    font-family: var(--fonte-mono);
+    font-size: 8px;
+    fill: var(--texto);
+}
+
+
+/* =====================================================
+   7. LAUDO (resultado em "papel")
+   ===================================================== */
+
+.laudo {
+    position: relative;
+    margin-top: 44px;
+    padding: 44px clamp(20px, 5vw, 56px);
+    background-color: var(--papel);
+    color: var(--tinta);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(35, 75, 54, 0.15);
+    border: 1px solid var(--borda);
+    animation: surgir 0.4s ease;
+}
+
+.laudo-cabecalho {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--borda);
+    margin-bottom: 26px;
+}
+
+.laudo-cabecalho h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+.laudo-meta {
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+    text-align: right;
+    line-height: 1.7;
+}
+
+.laudo-resumo {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    max-width: 760px;
+}
+
+/* Uma linha para cada recurso */
+.resultado {
+    --cor: var(--tinta);
+    display: grid;
+    grid-template-columns: 190px 1fr 150px;
+    gap: 26px;
+    align-items: start;
+    padding: 24px 0;
+    border-bottom: 1px dashed #b9b2a3;
+}
+
+.resultado-agua { --cor: var(--agua-tinta); }
+.resultado-nome { font-weight: 600; }
+.resultado-energia { --cor: var(--energia-tinta); }
+.resultado-alimento { --cor: var(--alimento-tinta); }
+
+.resultado-nome {
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+    color: var(--cor);
+}
+
+.resultado-valor {
+    font-family: var(--fonte-mono);
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--cor);
+}
+
+.resultado-unidade {
+    font-size: 0.82rem;
+}
+
+/* Barra de comparação: você x média */
+.comparacao {
+    margin-bottom: 14px;
+}
+
+.comparacao-linha {
+    display: grid;
+    grid-template-columns: 70px 1fr 90px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+}
+
+.comparacao-trilho {
+    height: 14px;
+    border-radius: 3px;
+    background-color: #e3ddd0;
+    overflow: hidden;
+}
+
+.comparacao-barra {
+    height: 100%;
+    width: 0;
+    background-color: var(--cor);
+    transition: width 1s ease;
+}
+
+.comparacao-barra.media {
+    background-color: #8f8778;
+}
+
+.comparacao-linha span:last-child {
+    text-align: right;
+}
+
+/* Composição: barra empilhada com as partes do consumo */
+.composicao-titulo {
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+    margin: 12px 0 6px;
+}
+
+.composicao {
+    display: flex;
+    height: 22px;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #e3ddd0;
+}
+
+.composicao span {
+    height: 100%;
+    border-right: 2px solid var(--papel);
+}
+
+.legenda {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 8px;
+    font-size: 0.82rem;
+}
+
+.legenda li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legenda i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+/* Selo de situação */
+.selo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background-color: color-mix(in srgb, currentColor 12%, transparent);
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.selo-abaixo { color: #2f7d32; }
+.selo-media { color: #8a6d00; }
+.selo-acima { color: #b3261e; }
+
+.selo-texto {
+    margin-top: 12px;
+    font-size: 0.85rem;
+}
+
+/* Ponto de atenção e plano de ação */
+.laudo-atencao {
+    margin-top: 30px;
+    padding: 22px 24px;
+    border-radius: 12px;
+    background-color: var(--verde-claro);
+}
+
+.laudo-atencao h4,
+.laudo-plano h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.laudo-plano {
+    margin-top: 30px;
+}
+
+.lista-plano {
+    list-style: none;
+    counter-reset: plano;
+}
+
+.lista-plano li {
+    counter-increment: plano;
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px dashed #b9b2a3;
+}
+
+.lista-plano li::before {
+    content: counter(plano);
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--verde-claro);
+    color: var(--verde-escuro);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.plano-economia {
+    font-family: var(--fonte-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.laudo-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.laudo .botao-contorno {
+    color: var(--texto);
+    border-color: var(--borda);
+}
+
+.laudo .botao-principal {
+    background-color: var(--verde-principal);
+    color: #ffffff;
+}
+
+.laudo-nota {
+    margin-top: 22px;
+    font-size: 0.8rem;
+    color: #5d665f;
+}
+
+
+/* =====================================================
+   8. INICIATIVAS
+   ===================================================== */
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.filtro {
+    padding: 8px 18px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: var(--painel);
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filtro.ativo {
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+    background-color: rgba(56, 118, 80, 0.08);
+}
+
+.lista-iniciativas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+}
+
+.iniciativa {
+    --cor: var(--verde-principal);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    background-color: var(--painel);
+    animation: surgir 0.35s ease;
+}
+
+.iniciativa.destaque {
+    border-color: var(--verde-principal);
+    box-shadow: 0 8px 24px rgba(35, 75, 54, 0.1);
+}
+
+.iniciativa-selo {
+    align-self: flex-start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background-color: var(--verde-claro);
+    color: var(--verde-escuro);
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.iniciativa-temas {
+    display: flex;
+    gap: 6px;
+}
+
+.tema {
+    padding: 2px 8px;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+}
+
+.tema-agua { color: var(--agua); }
+.tema-energia { color: var(--energia); }
+.tema-alimentos { color: var(--alimento); }
+.tema-residuos { color: var(--verde-principal); }
+
+.iniciativa h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.iniciativa-quem {
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+}
+
+.iniciativa p {
+    font-size: 0.95rem;
+}
+
+.iniciativa-dado {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background-color: var(--fundo);
+    font-size: 0.88rem !important;
+}
+
+.iniciativa-onde {
+    margin-top: auto;
+    font-size: 0.85rem !important;
+    color: var(--texto-suave);
+}
+
+.iniciativa a {
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+    color: var(--verde-principal);
+}
+
+.nota-rodape {
+    margin-top: 22px;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+
+/* =====================================================
+   9. AÇÕES E PAINEL DE IMPACTO
+   ===================================================== */
+
+.acoes-grade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.formulario-acao,
+.painel-impacto {
+    padding: 28px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background-color: var(--painel);
+}
+
+.painel-impacto {
+    background-color: var(--painel-claro);
+}
+
+.formulario-acao h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.campo label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+
+.campo-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.campo-com-unidade {
+    display: grid;
+    grid-template-columns: 1fr 86px;
+    gap: 8px;
+}
+
+.mensagem {
+    min-height: 1.4em;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.mensagem.erro { color: var(--alimento); }
+.mensagem.sucesso { color: var(--verde-principal); }
+
+.formulario-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicadores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.indicador {
+    background-color: var(--painel);
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+}
+
+.indicador-valor {
+    font-family: var(--fonte-mono);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--verde-principal);
+    line-height: 1.1;
+}
+
+.indicador-nome {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+.painel-subtitulo {
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+    margin: 18px 0 10px;
+}
+
+.reducoes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.reducao {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--painel);
+    border: 1px solid var(--borda);
+    text-align: center;
+}
+
+.reducao strong {
+    display: block;
+    font-family: var(--fonte-mono);
+    font-size: 1.15rem;
+}
+
+.reducao span {
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+/* Gráfico de barras horizontais feito com div */
+.barra-tema {
+    display: grid;
+    grid-template-columns: 96px 1fr 28px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.barra-tema-trilho {
+    height: 12px;
+    border-radius: 999px;
+    background-color: var(--borda);
+    overflow: hidden;
+}
+
+.barra-tema-preenchida {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.8s ease;
+}
+
+.barra-tema span:last-child {
+    font-family: var(--fonte-mono);
+    text-align: right;
+}
+
+.lista-acoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.cartao-acao {
+    position: relative;
+    padding: 20px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    background-color: var(--painel);
+}
+
+.cartao-acao h4 {
+    font-size: 1.05rem;
+    margin: 8px 0 10px;
+    padding-right: 30px;
+}
+
+.cartao-acao dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 10px;
+    font-size: 0.85rem;
+}
+
+.cartao-acao dt {
+    color: var(--texto-suave);
+}
+
+.botao-excluir {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: none;
+    color: var(--texto-suave);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.botao-excluir:hover {
+    border-color: var(--alimento);
+    color: var(--alimento);
+}
+
+.vazio {
+    grid-column: 1 / -1;
+    padding: 30px;
+    border: 1px dashed var(--borda);
+    border-radius: var(--raio);
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+
+/* =====================================================
+   10. SOBRE E FONTES
+   ===================================================== */
+
+.sobre-grade {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+}
+
+.sobre-texto {
+    font-size: 1.2rem;
+    line-height: 1.35;
+}
+
+.ods {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 14px;
+    padding: 22px;
+    border-radius: var(--raio);
+    border: 1px solid var(--borda);
+    background-color: var(--painel);
+}
+
+.ods-numero {
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    font-family: var(--fonte-mono);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.ods-12 .ods-numero {
+    font-weight: 700; background-color: var(--energia); }
+.ods-17 .ods-numero {
+    font-weight: 700; background-color: var(--agua); }
+
+.ods h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.ods p {
+    font-size: 0.92rem;
+    color: var(--texto-suave);
+}
+
+.fontes {
+    margin-top: 60px;
+}
+
+.fontes h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.tabela-rolagem {
+    margin-top: 20px;
+    overflow-x: auto;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--borda);
+}
+
+th {
+    font-family: var(--fonte-mono);
+    font-size: 0.82rem;
+    color: var(--verde-principal);
+    background-color: var(--painel);
+}
+
+td:nth-child(2) {
+    font-family: var(--fonte-mono);
+    white-space: nowrap;
+}
+
+td a {
+    color: var(--agua);
+}
+
+
+/* =====================================================
+   11. RODAPÉ
+   ===================================================== */
+
+.rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 60px 6%;
+    border-top: 1px solid var(--borda);
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+.rodape-creditos {
+    font-family: var(--fonte-mono);
+    font-size: 0.8rem;
+}
+
+
+/* =====================================================
+   12. ANIMAÇÕES
+   ===================================================== */
+
+@keyframes piscar {
+    50% { opacity: 0.3; }
+}
+
+/* Tracejado andando dentro dos canos */
+@keyframes correr {
+    to { stroke-dashoffset: -36; }
+}
+
+/* Onda da água andando para o lado */
+@keyframes ondular {
+    to { transform: translateX(-40px); }
+}
+
+@keyframes oscilar {
+    0%, 100% { transform: rotate(-35deg); }
+    50% { transform: rotate(40deg); }
+}
+
+@keyframes pesar {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes surgir {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* O laudo "sai da impressora" */
+@keyframes imprimir {
+    from { opacity: 0; transform: translateY(-30px); clip-path: inset(0 0 100% 0); }
+    to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+}
+
+/* Respeita quem prefere menos movimento na tela */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Impressão: imprime só o laudo */
+@media print {
+    body { background: #fff; }
+    .cabecalho, .inicio, .faixa-registro, #protocolo, .secao-fichas,
+    .bancada-medicao, .secao-estimativa .titulo-secao, #iniciativas,
+    #acoes, #sobre, .rodape, .laudo-botoes { display: none !important; }
+    .secao-estimativa { padding: 0; }
+    .laudo { box-shadow: none; margin: 0; }
+    .laudo::before { display: none; }
+}
+
+
+/* =====================================================
+   13. TELAS MENORES
+   ===================================================== */
+
+@media (max-width: 1000px) {
+    .inicio,
+    .bancada-medicao,
+    .acoes-grade {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio {
+        min-height: auto;
+    }
+
+    /* No celular o monitor fica acima do formulário, em 3 colunas */
+    .monitor {
+        position: static;
+        order: -1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .monitor-titulo {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+    }
+
+    .medidor {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 6px;
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .medidor-svg {
+        width: 80px;
+    }
+
+    .medidor-valor {
+        font-size: 1.3rem;
+    }
+
+    .medidor-valor small,
+    .medidor-ref {
+        display: block;
+        font-size: 0.78rem;
+    }
+
+    .protocolo,
+    .fichas,
+    .sobre-grade {
+        grid-template-columns: 1fr;
+    }
+
+    .resultado {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .status-painel {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .cabecalho {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navegacao {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .secao {
+        padding: 70px 5%;
+    }
+
+    .inicio-dados {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio-dados li + li {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--borda);
+    }
+
+    .etapas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .opcoes,
+    .opcoes-3,
+    .opcoes-cartao,
+    .campo-duplo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .reducoes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .questionario {
+        padding: 20px;
+    }
+
+    .controle-linha output {
+        min-width: 96px;
+    }
+
+    .lista-plano li {
+        grid-template-columns: 36px 1fr;
+    }
+
+    .plano-economia {
+        grid-column: 2;
+        text-align: left;
     }
 }
