@@ -1671,6 +1671,50 @@ td a {
 }
 
 
+/* Logos institucionais */
+.logos-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 20px;
+    border-left: 1px solid var(--borda);
+}
+
+.logos-cabecalho img {
+    height: 40px;
+    width: auto;
+}
+
+.logos-rodape {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--borda);
+}
+
+.logos-rodape figure {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    text-align: left;
+}
+
+.logos-rodape img {
+    height: 72px;
+    width: auto;
+}
+
+.logos-rodape figcaption {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    color: var(--texto);
+}
+
+
 /* =====================================================
    12. ANIMAÇÕES
    ===================================================== */
@@ -1802,6 +1846,15 @@ td a {
 }
 
 @media (max-width: 720px) {
+    .logos-cabecalho {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .logos-cabecalho img {
+        height: 32px;
+    }
+
     .cabecalho {
         flex-direction: column;
         gap: 10px;
